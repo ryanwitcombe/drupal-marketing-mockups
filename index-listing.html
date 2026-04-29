@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources — Drupal CMS</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --drupal-blue: #0678BE;
+  --drupal-dark: #0A1628;
+  --accent: #29ABE2;
+  --warm: #E8714A;
+  --green: #2E9E6E;
+  --cream: #FAF8F5;
+  --text: #1A1A2E;
+  --text-muted: #5A6578;
+  --border: #E2E0DC;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; }
+
+nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; padding: 0 48px; height: 64px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--drupal-blue); margin-right: 40px; letter-spacing: -0.5px; }
+.nav-links { display: flex; gap: 32px; flex: 1; }
+.nav-links a { text-decoration: none; font-size: 14px; font-weight: 400; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { font-size: 13px; font-weight: 500; padding: 9px 22px; background: var(--drupal-blue); color: #fff; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+
+/* PAGE HEADER */
+.page-header { padding: 80px 48px 48px; background: var(--cream); }
+.page-header-inner { max-width: 1200px; margin: 0 auto; }
+.page-header h1 {
+  font-family: var(--font-display); font-weight: 500; font-size: 44px;
+  letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px;
+}
+.page-header p {
+  font-size: 17px; color: var(--text-muted); line-height: 1.7; max-width: 560px;
+}
+
+/* FEATURED ARTICLE — pinned/hero card */
+.featured-hero { padding: 0 48px 64px; background: var(--cream); }
+.featured-hero-inner { max-width: 1200px; margin: 0 auto; }
+.fh-card {
+  display: grid; grid-template-columns: 1.3fr 1fr; border-radius: 12px;
+  overflow: hidden; border: 1px solid var(--border); background: #fff;
+  text-decoration: none; color: var(--text); transition: all 0.3s;
+}
+.fh-card:hover { border-color: var(--drupal-blue); box-shadow: 0 12px 36px rgba(0,0,0,0.06); }
+.fh-image {
+  background: var(--drupal-dark); min-height: 300px;
+  display: flex; align-items: center; justify-content: center;
+}
+.fh-image-label { font-size: 13px; color: rgba(255,255,255,0.3); }
+.fh-content { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+.fh-tag {
+  font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--drupal-blue); margin-bottom: 14px;
+}
+.fh-content h2 {
+  font-family: var(--font-display); font-size: 28px; font-weight: 500;
+  letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 14px;
+}
+.fh-content p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+.fh-meta { font-size: 13px; color: var(--text-muted); }
+.fh-meta strong { color: var(--text); font-weight: 500; }
+
+/* FILTER BAR */
+.filters { padding: 0 48px; border-bottom: 1px solid var(--border); background: #fff; position: sticky; top: 64px; z-index: 50; }
+.filters-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 8px; padding: 16px 0;
+  overflow-x: auto;
+}
+.filter-btn {
+  font-family: var(--font-body); font-size: 13px; font-weight: 500;
+  padding: 8px 18px; border-radius: 20px; border: 1px solid var(--border);
+  background: #fff; color: var(--text-muted); cursor: pointer;
+  transition: all 0.2s; white-space: nowrap;
+}
+.filter-btn:hover { border-color: var(--drupal-blue); color: var(--drupal-blue); }
+.filter-btn.active {
+  background: var(--drupal-blue); color: #fff; border-color: var(--drupal-blue);
+}
+.filter-search {
+  margin-left: auto; padding: 8px 16px; border-radius: 8px;
+  border: 1px solid var(--border); font-family: var(--font-body);
+  font-size: 13px; color: var(--text); width: 220px; outline: none;
+  background: #fff;
+}
+.filter-search:focus { border-color: var(--drupal-blue); }
+.filter-search::placeholder { color: var(--text-muted); }
+
+/* CARD GRID */
+.listing { padding: 48px; }
+.listing-inner { max-width: 1200px; margin: 0 auto; }
+.listing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.listing-card {
+  border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+  transition: all 0.3s; text-decoration: none; color: var(--text); display: block;
+  background: #fff;
+}
+.listing-card:hover { border-color: var(--drupal-blue); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.lc-image {
+  background: var(--drupal-dark); min-height: 180px;
+  display: flex; align-items: center; justify-content: center;
+}
+.lc-image-label { font-size: 12px; color: rgba(255,255,255,0.3); }
+.lc-content { padding: 24px; }
+.lc-tag {
+  font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 10px; display: inline-block; padding: 3px 10px; border-radius: 12px;
+}
+.lc-tag.thought { background: rgba(6,120,190,0.08); color: var(--drupal-blue); }
+.lc-tag.product { background: rgba(232,113,74,0.08); color: var(--warm); }
+.lc-tag.community { background: rgba(46,158,110,0.08); color: var(--green); }
+.lc-tag.guide { background: rgba(41,171,226,0.08); color: var(--accent); }
+.lc-content h3 {
+  font-size: 17px; font-weight: 500; letter-spacing: -0.3px;
+  margin-bottom: 8px; line-height: 1.35;
+}
+.lc-content p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
+.lc-meta { font-size: 12px; color: var(--text-muted); }
+
+/* PAGINATION */
+.pagination { max-width: 1200px; margin: 0 auto; padding: 16px 0 64px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.page-btn {
+  width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
+  background: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: var(--text-muted); cursor: pointer; transition: all 0.2s;
+  text-decoration: none; font-family: var(--font-body);
+}
+.page-btn:hover { border-color: var(--drupal-blue); color: var(--drupal-blue); }
+.page-btn.active { background: var(--drupal-blue); color: #fff; border-color: var(--drupal-blue); }
+.page-btn.nav-arrow { font-size: 16px; }
+
+/* NEWSLETTER */
+.newsletter { padding: 64px 48px; background: var(--cream); }
+.newsletter-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+.newsletter-inner h3 {
+  font-family: var(--font-display); font-size: 28px; font-weight: 500;
+  letter-spacing: -0.5px; margin-bottom: 12px;
+}
+.newsletter-inner p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; }
+.nl-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
+.nl-input {
+  flex: 1; padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border);
+  font-family: var(--font-body); font-size: 14px; color: var(--text); outline: none;
+}
+.nl-input:focus { border-color: var(--drupal-blue); }
+.nl-input::placeholder { color: var(--text-muted); }
+.nl-btn {
+  padding: 12px 24px; border-radius: 8px; background: var(--drupal-blue);
+  color: #fff; border: none; font-family: var(--font-body); font-size: 14px;
+  font-weight: 500; cursor: pointer; transition: background 0.2s;
+}
+.nl-btn:hover { background: #0589d6; }
+
+footer { padding: 48px; background: var(--drupal-dark); color: rgba(255,255,255,0.4); font-size: 13px; text-align: center; }
+footer a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 8px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.page-header-inner > * { animation: fadeUp 0.6s ease-out both; }
+.page-header-inner > *:nth-child(2) { animation-delay: 0.08s; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .page-header { padding: 60px 24px 36px; }
+  .page-header h1 { font-size: 32px; }
+  .featured-hero { padding: 0 24px 48px; }
+  .fh-card { grid-template-columns: 1fr; }
+  .fh-image { min-height: 200px; }
+  .filters { padding: 0 24px; }
+  .filter-search { width: 160px; }
+  .listing { padding: 36px 24px; }
+  .listing-grid { grid-template-columns: 1fr; }
+  .newsletter { padding: 48px 24px; }
+  .nl-form { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Drupal</span>
+  <div class="nav-links">
+    <a href="#">Product</a>
+    <a href="#">Solutions</a>
+    <a href="#">Partners</a>
+    <a href="#">Resources</a>
+  </div>
+  <a class="nav-cta" href="#">Try Drupal CMS</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-inner">
+    <h1>Resources</h1>
+    <p>Insights, guides, and stories from the Drupal community. Everything you need to evaluate, adopt, and get the most from Drupal CMS.</p>
+  </div>
+</section>
+
+<!-- FEATURED / PINNED ARTICLE -->
+<section class="featured-hero">
+  <div class="featured-hero-inner">
+    <a class="fh-card" href="#">
+      <div class="fh-image"><span class="fh-image-label">[ Featured article image ]</span></div>
+      <div class="fh-content">
+        <div class="fh-tag">Thought leadership</div>
+        <h2>Why open source is the enterprise default in 2026</h2>
+        <p>The shift from proprietary to open is no longer a philosophical debate — it's a procurement decision. Here's what changed.</p>
+        <div class="fh-meta"><strong>Ryan Mitchell</strong> · 15 April 2026</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filters">
+  <div class="filters-inner">
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn">Thought leadership</button>
+    <button class="filter-btn">Product</button>
+    <button class="filter-btn">Community</button>
+    <button class="filter-btn">Guides</button>
+    <button class="filter-btn">Customer stories</button>
+    <input class="filter-search" type="text" placeholder="Search resources...">
+  </div>
+</div>
+
+<!-- CARD GRID -->
+<section class="listing">
+  <div class="listing-inner">
+    <div class="listing-grid">
+
+      <a class="listing-card" href="#">
+        <div class="lc-image"><span class="lc-image-label">[ Image ]</span></div>
+        <div class="lc-content">
+          <div class="lc-tag product">Product</div>
+          <h3>What's new in Drupal CMS 2.0</h3>
+          <p>Canvas, AI agents, Recipes, and the features that make this the most significant Drupal release in a decade.</p>
+          <div class="lc-meta">8 April 2026</div>
+        </div>
+      </a>
+
+      <a class="listing-card" href="#">
+        <div class="lc-image"><span class="lc-image-label">[ Image ]</span></div>
+        <div class="lc-content">
+          <div class="lc-tag community">Customer story</div>
+          <h3>How [Organisation] migrated from WordPress in 6 weeks</h3>
+          <p>A mid-market agency's journey from security headaches to Drupal CMS stability.</p>
+          <div class="lc-meta">2 April 2026</div>
+        </div>
+      </a>
+
+      <a class="listing-card" href="#">
+        <div class="lc-image"><span class="lc-image-label">[ Image ]</span></div>
+        <div class="lc-content">
+          <div class="lc-tag guide">Guide</div>
+          <h3>Getting started with Drupal Canvas</h3>
+          <p>Everything a marketing team needs to know about visual page building in Drupal CMS.</p>
+          <div class="lc-meta">28 March 2026</div>
+        </div>
+      </a>
+
+      <a class="listing-card" href="#">
+        <div class="lc-image"><span class="lc-image-label">[ Image ]</span></div>
+        <div class="lc-content">
+          <div class="lc-tag thought">Thought leadership</div>
+          <h3>Digital sovereignty: why your CMS choice is a governance decision</h3>
+          <p>Data ownership, hosting independence, and the geopolitics of platform choice.</p>
+          <div class="lc-meta">20 March 2026</div>
+        </div>
+      </a>
+
+      <a class="listing-card" href="#">
+        <div class="lc-image"><span class="lc-image-label">[ Image ]</span></div>
+        <div class="lc-content">
+          <div class="lc-tag product">Product</div>
+          <h3>AI content tools in Drupal CMS: a practical guide</h3>
+          <p>How to use the 22 built-in AI agents for content generation, translation, SEO, and more.</p>
+          <div class="lc-meta">14 March 2026</div>
+        </div>
+      </a>
+
+      <a class="listing-card" href="#">
+        <div class="lc-image"><span class="lc-image-label">[ Image ]</span></div>
+        <div class="lc-content">
+          <div class="lc-tag guide">Guide</div>
+          <h3>SEO with Drupal CMS</h3>
+          <p>Structured data, sitemaps, metadata, and the SEO recipe — everything you need for search visibility.</p>
+          <div class="lc-meta">8 March 2026</div>
+        </div>
+      </a>
+
+      <a class="listing-card" href="#">
+        <div class="lc-image"><span class="lc-image-label">[ Image ]</span></div>
+        <div class="lc-content">
+          <div class="lc-tag thought">Thought leadership</div>
+          <h3>The total cost of owning a proprietary CMS</h3>
+          <p>Licensing, migration penalties, and forced upgrades — what the sales pitch doesn't mention.</p>
+          <div class="lc-meta">1 March 2026</div>
+        </div>
+      </a>
+
+      <a class="listing-card" href="#">
+        <div class="lc-image"><span class="lc-image-label">[ Image ]</span></div>
+        <div class="lc-content">
+          <div class="lc-tag community">Community</div>
+          <h3>Meet the contributor: building Drupal Canvas from the inside</h3>
+          <p>How a team of volunteers and contributors built the visual page builder that ships with Drupal CMS.</p>
+          <div class="lc-meta">22 February 2026</div>
+        </div>
+      </a>
+
+      <a class="listing-card" href="#">
+        <div class="lc-image"><span class="lc-image-label">[ Image ]</span></div>
+        <div class="lc-content">
+          <div class="lc-tag product">Product</div>
+          <h3>Recipes: pre-built site configurations explained</h3>
+          <p>What they are, how they work, and why they're the fastest way to start a Drupal CMS site.</p>
+          <div class="lc-meta">15 February 2026</div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+      <a class="page-btn nav-arrow" href="#">←</a>
+      <a class="page-btn active" href="#">1</a>
+      <a class="page-btn" href="#">2</a>
+      <a class="page-btn" href="#">3</a>
+      <a class="page-btn" href="#">4</a>
+      <a class="page-btn nav-arrow" href="#">→</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <h3>Stay in the loop</h3>
+    <p>Get the latest on Drupal CMS, open source, and enterprise digital strategy. No spam, unsubscribe any time.</p>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="Your email address">
+      <button class="nl-btn">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Drupal is a registered trademark of Dries Buytaert.</p>
+  <p style="margin-top: 8px;"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a><a href="#">Community</a><a href="#">Documentation</a></p>
+</footer>
+
+</body>
+</html>

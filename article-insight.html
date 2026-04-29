@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why open source is the enterprise default in 2026 — Drupal CMS</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --drupal-blue: #0678BE;
+  --drupal-dark: #0A1628;
+  --accent: #29ABE2;
+  --warm: #E8714A;
+  --green: #2E9E6E;
+  --cream: #FAF8F5;
+  --text: #1A1A2E;
+  --text-muted: #5A6578;
+  --border: #E2E0DC;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; padding: 0 48px; height: 64px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--drupal-blue); margin-right: 40px; letter-spacing: -0.5px; }
+.nav-links { display: flex; gap: 32px; flex: 1; }
+.nav-links a { text-decoration: none; font-size: 14px; font-weight: 400; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { font-size: 13px; font-weight: 500; padding: 9px 22px; background: var(--drupal-blue); color: #fff; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+
+/* ARTICLE HEADER */
+.article-header { padding: 80px 48px 48px; background: var(--cream); }
+.article-header-inner { max-width: 720px; margin: 0 auto; }
+.article-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+.article-pillar {
+  font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 4px 12px; border-radius: 20px; text-decoration: none;
+}
+.pillar-thought { background: rgba(6,120,190,0.08); color: var(--drupal-blue); }
+.pillar-product { background: rgba(232,113,74,0.08); color: var(--warm); }
+.pillar-community { background: rgba(46,158,110,0.08); color: var(--green); }
+.article-date { font-size: 13px; color: var(--text-muted); }
+.article-header h1 {
+  font-family: var(--font-display); font-weight: 500; font-size: 44px;
+  line-height: 1.12; letter-spacing: -1.5px; margin-bottom: 20px;
+}
+.article-excerpt {
+  font-size: 18px; line-height: 1.7; color: var(--text-muted); margin-bottom: 32px;
+}
+
+/* AUTHOR */
+.author { display: flex; align-items: center; gap: 14px; }
+.author-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(6,120,190,0.1); display: flex; align-items: center;
+  justify-content: center; font-weight: 500; font-size: 14px; color: var(--drupal-blue);
+}
+.author-name { font-size: 14px; font-weight: 500; }
+.author-role { font-size: 13px; color: var(--text-muted); }
+
+/* HERO IMAGE */
+.article-image { max-width: 720px; margin: 0 auto; padding: 0 48px; }
+.article-image-inner {
+  background: var(--drupal-dark); border-radius: 12px;
+  min-height: 360px; display: flex; align-items: center; justify-content: center;
+}
+.article-image-label { font-size: 13px; color: rgba(255,255,255,0.3); }
+
+/* ARTICLE BODY */
+.article-body { max-width: 720px; margin: 0 auto; padding: 48px 48px 0; }
+.article-content h2 {
+  font-family: var(--font-display); font-size: 28px; font-weight: 500;
+  letter-spacing: -0.5px; margin: 48px 0 16px; line-height: 1.25;
+}
+.article-content h2:first-child { margin-top: 0; }
+.article-content p {
+  font-size: 17px; line-height: 1.8; color: var(--text); margin-bottom: 24px;
+}
+.article-content blockquote {
+  font-family: var(--font-display); font-size: 22px; font-weight: 300;
+  font-style: italic; line-height: 1.5; letter-spacing: -0.3px;
+  color: var(--drupal-blue); border-left: 3px solid var(--drupal-blue);
+  padding: 4px 0 4px 24px; margin: 40px 0;
+}
+.article-content ul {
+  margin: 0 0 24px 20px; font-size: 17px; line-height: 1.8;
+}
+.article-content ul li { margin-bottom: 8px; }
+.article-content a { color: var(--drupal-blue); }
+
+/* SHARE */
+.article-share { max-width: 720px; margin: 0 auto; padding: 32px 48px; display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--border); }
+.share-label { font-size: 13px; color: var(--text-muted); }
+.share-btn {
+  width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
+  background: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: var(--text-muted); cursor: pointer; transition: all 0.2s;
+  text-decoration: none;
+}
+.share-btn:hover { border-color: var(--drupal-blue); color: var(--drupal-blue); }
+
+/* DCP EXPERT ATTRIBUTION */
+.dcp-attribution {
+  max-width: 720px; margin: 0 auto; padding: 0 48px;
+}
+.dcp-card {
+  background: var(--cream); border: 1px solid var(--border); border-radius: 12px;
+  padding: 28px; display: flex; gap: 20px; align-items: center;
+}
+.dcp-logo {
+  width: 64px; height: 64px; border-radius: 12px; background: #fff;
+  border: 1px solid var(--border); display: flex; align-items: center;
+  justify-content: center; font-family: var(--font-display); font-size: 16px;
+  color: var(--text-muted); flex-shrink: 0;
+}
+.dcp-info { flex: 1; }
+.dcp-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; color: var(--drupal-blue); margin-bottom: 6px; }
+.dcp-info h4 { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+.dcp-info p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.dcp-link { font-size: 13px; color: var(--drupal-blue); text-decoration: none; font-weight: 500; flex-shrink: 0; }
+.dcp-link:hover { text-decoration: underline; }
+
+/* NEWSLETTER CTA */
+.newsletter {
+  max-width: 720px; margin: 0 auto; padding: 48px 48px;
+}
+.newsletter-card {
+  background: var(--drupal-dark); border-radius: 12px; padding: 40px;
+  text-align: center; color: #fff;
+}
+.newsletter-card h3 {
+  font-family: var(--font-display); font-size: 24px; font-weight: 500;
+  letter-spacing: -0.5px; margin-bottom: 10px;
+}
+.newsletter-card p { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 24px; }
+.newsletter-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; }
+.newsletter-input {
+  flex: 1; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06); color: #fff; font-family: var(--font-body);
+  font-size: 14px; outline: none;
+}
+.newsletter-input::placeholder { color: rgba(255,255,255,0.35); }
+.newsletter-input:focus { border-color: rgba(255,255,255,0.3); }
+.newsletter-btn {
+  padding: 12px 24px; border-radius: 8px; background: var(--drupal-blue);
+  color: #fff; border: none; font-family: var(--font-body); font-size: 14px;
+  font-weight: 500; cursor: pointer; transition: background 0.2s;
+}
+.newsletter-btn:hover { background: #0589d6; }
+
+/* RELATED ARTICLES */
+.related { padding: 80px 48px; background: var(--cream); }
+.related-inner { max-width: 1200px; margin: 0 auto; }
+.related h2 { font-family: var(--font-display); font-size: 28px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 36px; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.related-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; text-decoration: none; color: var(--text); display: block; }
+.related-card:hover { border-color: var(--drupal-blue); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.rc-image { background: var(--drupal-dark); min-height: 160px; display: flex; align-items: center; justify-content: center; }
+.rc-image-label { font-size: 12px; color: rgba(255,255,255,0.3); }
+.rc-content { padding: 24px; }
+.rc-tag { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; color: var(--drupal-blue); margin-bottom: 10px; }
+.rc-content h3 { font-size: 17px; font-weight: 500; letter-spacing: -0.3px; margin-bottom: 8px; line-height: 1.3; }
+.rc-content p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+footer { padding: 48px; background: var(--drupal-dark); color: rgba(255,255,255,0.4); font-size: 13px; text-align: center; }
+footer a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 8px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.article-header-inner > * { animation: fadeUp 0.6s ease-out both; }
+.article-header-inner > *:nth-child(2) { animation-delay: 0.06s; }
+.article-header-inner > *:nth-child(3) { animation-delay: 0.1s; }
+.article-header-inner > *:nth-child(4) { animation-delay: 0.14s; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .article-header { padding: 60px 24px 36px; }
+  .article-header h1 { font-size: 32px; }
+  .article-body { padding: 36px 24px 0; }
+  .article-image { padding: 0 24px; }
+  .article-share { padding: 24px; }
+  .dcp-attribution { padding: 0 24px; }
+  .dcp-card { flex-direction: column; text-align: center; }
+  .newsletter { padding: 36px 24px; }
+  .newsletter-form { flex-direction: column; }
+  .related { padding: 60px 24px; }
+  .related-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Drupal</span>
+  <div class="nav-links">
+    <a href="#">Product</a>
+    <a href="#">Solutions</a>
+    <a href="#">Partners</a>
+    <a href="#">Resources</a>
+  </div>
+  <a class="nav-cta" href="#">Try Drupal CMS</a>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<section class="article-header">
+  <div class="article-header-inner">
+    <div class="article-meta">
+      <a class="article-pillar pillar-thought" href="#">Thought leadership</a>
+      <span class="article-date">15 April 2026</span>
+    </div>
+    <h1>Why open source is the enterprise default in 2026</h1>
+    <p class="article-excerpt">The shift from proprietary to open is no longer a philosophical debate — it's a procurement decision. Here's what changed, and what it means for your next platform choice.</p>
+    <div class="author">
+      <div class="author-avatar">RM</div>
+      <div>
+        <div class="author-name">Ryan Mitchell</div>
+        <div class="author-role">Drupal Association</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HERO IMAGE -->
+<div class="article-image">
+  <div class="article-image-inner">
+    <span class="article-image-label">[ Article hero image ]</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+  <div class="article-content">
+    <h2>The procurement shift</h2>
+    <p>Five years ago, choosing open source for an enterprise CMS required a business case. You had to justify why you weren't going with Sitecore, Adobe, or Optimizely. The burden of proof was on open source.</p>
+    <p>That has inverted. In 2026, the burden of proof is on proprietary. Procurement teams are asking vendors to justify why an organisation should accept lock-in, per-seat licensing, and opaque pricing when open alternatives offer comparable — and in many cases superior — capability.</p>
+
+    <blockquote>The question is no longer "why open source?" It's "why would we accept lock-in?"</blockquote>
+
+    <h2>What changed</h2>
+    <p>Three things converged to make open source the default rather than the alternative:</p>
+    <ul>
+      <li><strong>AI levelled the playing field.</strong> The most significant AI capabilities — content generation, translation, personalisation, search — are available as open APIs. Open source CMS platforms integrate them without licensing friction. Proprietary platforms charge for the privilege.</li>
+      <li><strong>Security perception caught up with reality.</strong> The argument that proprietary software is "more secure" has been dismantled by a decade of evidence. Open source security — community-audited, transparently patched, independently verifiable — is now understood as a strength, not a risk.</li>
+      <li><strong>Total cost of ownership became visible.</strong> As organisations matured their digital operations, the hidden costs of proprietary platforms — migration penalties, feature-gating, forced upgrade cycles, per-user pricing at scale — became impossible to ignore.</li>
+    </ul>
+
+    <h2>What this means for your next platform decision</h2>
+    <p>If you're evaluating CMS platforms in 2026, the decision framework has changed. The question isn't which platform has the longest feature list — it's which platform gives you the most control over your own digital future.</p>
+    <p>Control means: owning your data, choosing your hosting, selecting your AI providers, hiring any agency to work on your site, and migrating away without penalty if the platform stops serving you.</p>
+    <p>That's not an ideological position. It's a risk management position. And it's why the world's most demanding organisations — governments, universities, global media, healthcare systems — have already made the move.</p>
+
+    <h2>Drupal's position in this shift</h2>
+    <p>Drupal CMS sits at the intersection of enterprise capability and open source freedom. It offers visual page building (Drupal Canvas), 22 built-in AI agents, and the structured content architecture that large organisations need — without licensing fees, without vendor lock-in, and without a single point of commercial failure.</p>
+    <p>The platform has been trusted by organisations like the European Commission, NASA, and NBC for over two decades. What's new is that in 2026, with Canvas and the AI initiative, it's now accessible to marketing teams — not just developers.</p>
+    <p>The open source enterprise isn't coming. It's here.</p>
+  </div>
+</div>
+
+<!-- SHARE -->
+<div class="article-share">
+  <span class="share-label">Share</span>
+  <a class="share-btn" href="#" title="LinkedIn">in</a>
+  <a class="share-btn" href="#" title="Twitter / X">X</a>
+  <a class="share-btn" href="#" title="Copy link">⎘</a>
+</div>
+
+<!-- DCP EXPERT ATTRIBUTION -->
+<div class="dcp-attribution">
+  <div class="dcp-card">
+    <div class="dcp-logo">A</div>
+    <div class="dcp-info">
+      <div class="dcp-label">Drupal Certified Partner</div>
+      <h4>[Partner Name] — Enterprise open source specialists</h4>
+      <p>Experts in Drupal CMS migration, architecture, and AI integration for enterprise organisations.</p>
+    </div>
+    <a class="dcp-link" href="#">View profile →</a>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="newsletter-card">
+    <h3>Stay in the loop</h3>
+    <p>Get the latest on Drupal CMS, open source, and enterprise digital strategy. No spam, unsubscribe any time.</p>
+    <div class="newsletter-form">
+      <input class="newsletter-input" type="email" placeholder="Your email address">
+      <button class="newsletter-btn">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED ARTICLES -->
+<section class="related">
+  <div class="related-inner">
+    <h2>More from Drupal</h2>
+    <div class="related-grid">
+      <a class="related-card" href="#">
+        <div class="rc-image"><div class="rc-image-label">[ Image ]</div></div>
+        <div class="rc-content">
+          <div class="rc-tag">Product</div>
+          <h3>What's new in Drupal CMS 2.0</h3>
+          <p>Canvas, AI agents, Recipes, and the most significant Drupal release in a decade.</p>
+        </div>
+      </a>
+      <a class="related-card" href="#">
+        <div class="rc-image"><div class="rc-image-label">[ Image ]</div></div>
+        <div class="rc-content">
+          <div class="rc-tag">Customer story</div>
+          <h3>How [Organisation] migrated from WordPress in 6 weeks</h3>
+          <p>A mid-market agency's journey from security headaches to Drupal CMS stability.</p>
+        </div>
+      </a>
+      <a class="related-card" href="#">
+        <div class="rc-image"><div class="rc-image-label">[ Image ]</div></div>
+        <div class="rc-content">
+          <div class="rc-tag">Thought leadership</div>
+          <h3>Digital sovereignty: why your CMS choice is a governance decision</h3>
+          <p>Data ownership, hosting independence, and the geopolitics of platform choice.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Drupal is a registered trademark of Dries Buytaert.</p>
+  <p style="margin-top: 8px;"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a><a href="#">Community</a><a href="#">Documentation</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drupal for Marketers — Drupal CMS</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --drupal-blue: #0678BE;
+  --drupal-dark: #0A1628;
+  --drupal-navy: #111D33;
+  --accent: #29ABE2;
+  --warm: #E8714A;
+  --green: #2E9E6E;
+  --cream: #FAF8F5;
+  --text: #1A1A2E;
+  --text-muted: #5A6578;
+  --text-light: rgba(255,255,255,0.7);
+  --border: #E2E0DC;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; }
+
+nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; padding: 0 48px; height: 64px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--drupal-blue); margin-right: 40px; letter-spacing: -0.5px; }
+.nav-links { display: flex; gap: 32px; flex: 1; }
+.nav-links a { text-decoration: none; font-size: 14px; font-weight: 400; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { font-size: 13px; font-weight: 500; padding: 9px 22px; background: var(--drupal-blue); color: #fff; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+
+/* HERO — editorial, full-width text, centred */
+.hero {
+  padding: 120px 48px 100px;
+  background: var(--cream);
+  text-align: center;
+}
+.hero-inner { max-width: 800px; margin: 0 auto; }
+.hero-badge { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 0.5px; padding: 5px 14px; border: 1px solid var(--drupal-blue); border-radius: 20px; color: var(--drupal-blue); margin-bottom: 28px; text-transform: uppercase; }
+.hero h1 {
+  font-family: var(--font-display); font-weight: 500; font-size: 58px;
+  line-height: 1.06; letter-spacing: -2px; margin-bottom: 28px; color: var(--text);
+}
+.hero h1 em { font-style: italic; font-weight: 300; color: var(--drupal-blue); }
+.hero-sub {
+  font-size: 19px; line-height: 1.7; color: var(--text-muted);
+  max-width: 600px; margin: 0 auto 40px;
+}
+.hero-actions { display: flex; gap: 16px; align-items: center; justify-content: center; }
+.btn-primary { font-family: var(--font-body); font-size: 15px; font-weight: 500; padding: 14px 28px; background: var(--drupal-blue); color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: #0589d6; transform: translateY(-1px); }
+.btn-secondary { font-family: var(--font-body); font-size: 15px; font-weight: 400; padding: 14px 28px; background: transparent; color: var(--drupal-blue); border: 1px solid var(--drupal-blue); border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.btn-secondary:hover { background: var(--drupal-blue); color: #fff; }
+
+/* PULL QUOTE */
+.pull-quote { padding: 64px 48px; background: #fff; text-align: center; border-bottom: 1px solid var(--border); }
+.pull-quote-inner { max-width: 800px; margin: 0 auto; }
+.pull-quote p {
+  font-family: var(--font-display); font-size: 28px; font-weight: 300;
+  font-style: italic; line-height: 1.45; letter-spacing: -0.5px; color: var(--text);
+}
+.pull-quote cite {
+  display: block; margin-top: 20px; font-style: normal;
+  font-family: var(--font-body); font-size: 14px; color: var(--text-muted);
+}
+.pull-quote cite strong { color: var(--text); font-weight: 500; }
+
+/* SECTION UTILITIES */
+.section-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; color: var(--drupal-blue); margin-bottom: 16px; }
+.section-title { font-family: var(--font-display); font-weight: 500; font-size: 36px; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px; max-width: 600px; }
+
+/* CAPABILITIES */
+.capabilities { padding: 100px 48px; }
+.cap-inner { max-width: 1200px; margin: 0 auto; }
+.cap-groups { display: flex; flex-direction: column; gap: 80px; }
+.cap-group { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.cap-group.reverse { direction: rtl; }
+.cap-group.reverse > * { direction: ltr; }
+.cap-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+.cap-label.blue { color: var(--drupal-blue); }
+.cap-label.warm { color: var(--warm); }
+.cap-label.green { color: var(--green); }
+.cap-text h3 { font-family: var(--font-display); font-size: 28px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 12px; line-height: 1.2; }
+.cap-text > p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+.cap-features { display: flex; flex-direction: column; gap: 10px; }
+.cap-feature { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.6; }
+.cap-check { color: var(--green); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.cap-visual { background: var(--drupal-dark); border-radius: 12px; padding: 32px; min-height: 280px; display: flex; align-items: center; justify-content: center; }
+.cap-visual-label { font-size: 13px; color: rgba(255,255,255,0.4); text-align: center; }
+
+/* CASE STUDY */
+.case-study { padding: 80px 48px; background: var(--drupal-dark); color: #fff; }
+.case-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; }
+.case-visual { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
+.case-visual-label { font-size: 13px; color: rgba(255,255,255,0.3); }
+.case-content .section-label { color: var(--accent); }
+.case-content h3 { font-family: var(--font-display); font-size: 24px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 12px; line-height: 1.3; }
+.case-content p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 20px; }
+.case-stats { display: flex; gap: 32px; margin-bottom: 24px; }
+.case-stat .num { font-family: var(--font-display); font-size: 28px; font-weight: 500; color: var(--accent); line-height: 1; }
+.case-stat .label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+.btn-link { font-size: 14px; color: var(--accent); text-decoration: none; font-weight: 500; }
+.btn-link:hover { text-decoration: underline; }
+
+/* CTA */
+.cta-section { padding: 100px 48px; background: linear-gradient(175deg, var(--drupal-dark) 0%, #0A2540 100%); color: #fff; text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; bottom: -40%; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(41,171,226,0.1) 0%, transparent 60%); }
+.cta-section h2 { font-family: var(--font-display); font-size: 42px; font-weight: 500; letter-spacing: -1px; margin-bottom: 16px; position: relative; }
+.cta-section p { font-size: 17px; color: rgba(255,255,255,0.6); margin-bottom: 36px; position: relative; }
+.cta-actions { display: flex; gap: 16px; justify-content: center; position: relative; }
+.btn-ghost { font-family: var(--font-body); font-size: 15px; font-weight: 400; padding: 14px 28px; background: transparent; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+/* FIND A PARTNER */
+.partner-section { padding: 80px 48px; background: var(--cream); border-top: 1px solid var(--border); }
+.partner-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; gap: 48px; }
+.partner-text { flex: 1; }
+.partner-text h2 { font-family: var(--font-display); font-size: 28px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 12px; }
+.partner-text p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+.btn-outline { font-family: var(--font-body); font-size: 14px; font-weight: 500; padding: 12px 24px; background: transparent; color: var(--drupal-blue); border: 1.5px solid var(--drupal-blue); border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.btn-outline:hover { background: var(--drupal-blue); color: #fff; }
+.partner-visual { width: 200px; height: 200px; background: rgba(6,120,190,0.06); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.partner-icon { font-size: 48px; color: var(--drupal-blue); opacity: 0.3; }
+
+/* RELATED */
+.related { padding: 80px 48px; }
+.related-inner { max-width: 1200px; margin: 0 auto; }
+.related h2 { font-family: var(--font-display); font-size: 28px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 36px; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.related-card { padding: 28px; border: 1px solid var(--border); border-radius: 12px; transition: all 0.3s; text-decoration: none; color: var(--text); }
+.related-card:hover { border-color: var(--drupal-blue); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.related-card .label { font-size: 12px; color: var(--drupal-blue); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+.related-card h3 { font-size: 18px; font-weight: 500; letter-spacing: -0.3px; margin-bottom: 8px; }
+.related-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+footer { padding: 48px; background: var(--drupal-dark); color: rgba(255,255,255,0.4); font-size: 13px; text-align: center; }
+footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.hero-inner > * { animation: fadeUp 0.7s ease-out both; }
+.hero-inner > *:nth-child(2) { animation-delay: 0.06s; }
+.hero-inner > *:nth-child(3) { animation-delay: 0.12s; }
+.hero-inner > *:nth-child(4) { animation-delay: 0.18s; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 80px 24px 60px; }
+  .hero h1 { font-size: 38px; }
+  .capabilities { padding: 60px 24px; }
+  .cap-group, .cap-group.reverse { grid-template-columns: 1fr; direction: ltr; }
+  .case-study { padding: 60px 24px; }
+  .case-inner { grid-template-columns: 1fr; }
+  .related-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 60px 24px; }
+  .pull-quote { padding: 48px 24px; }
+  .pull-quote p { font-size: 22px; }
+  .partner-inner { flex-direction: column; text-align: center; }
+  .partner-visual { width: 120px; height: 120px; }
+  .demo-grid { grid-template-columns: 1fr; }
+  .resources-grid { grid-template-columns: 1fr; }
+  .faq { padding: 60px 24px; }
+  .resources { padding: 60px 24px; }
+}
+
+/* RESOURCES BLOCK */
+.resources { padding: 80px 48px; background: #fff; }
+.resources-inner { max-width: 1200px; margin: 0 auto; }
+.resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+.resource-link {
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px;
+  border: 1px solid var(--border); border-radius: 10px;
+  text-decoration: none; color: var(--text); transition: all 0.2s;
+}
+.resource-link:hover { border-color: var(--drupal-blue); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+.resource-icon {
+  width: 40px; height: 40px; border-radius: 8px; display: flex;
+  align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;
+}
+.resource-icon.article { background: rgba(6,120,190,0.08); color: var(--drupal-blue); }
+.resource-icon.guide { background: rgba(46,158,110,0.08); color: var(--green); }
+.resource-icon.video { background: rgba(232,113,74,0.08); color: var(--warm); }
+.resource-icon.report { background: rgba(41,171,226,0.08); color: var(--accent); }
+.resource-text { flex: 1; }
+.resource-text strong { font-size: 14px; font-weight: 500; display: block; margin-bottom: 2px; }
+.resource-text span { font-size: 12px; color: var(--text-muted); }
+.resource-arrow { font-size: 14px; color: var(--text-muted); transition: transform 0.2s; }
+.resource-link:hover .resource-arrow { transform: translateX(3px); color: var(--drupal-blue); }
+
+/* FAQ ACCORDION */
+.faq { padding: 80px 48px; background: var(--cream); }
+.faq-inner { max-width: 800px; margin: 0 auto; }
+.faq-list { margin-top: 40px; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-question {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 20px 0; background: none; border: none;
+  font-family: var(--font-body); font-size: 16px; font-weight: 500;
+  color: var(--text); text-align: left; cursor: pointer; gap: 16px;
+  transition: color 0.2s;
+}
+.faq-question:hover { color: var(--drupal-blue); }
+.faq-chevron {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(6,120,190,0.08); display: flex;
+  align-items: center; justify-content: center;
+  font-size: 12px; color: var(--drupal-blue); flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-answer {
+  max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 0;
+}
+.faq-item.open .faq-answer { max-height: 300px; padding: 0 0 20px; }
+.faq-answer p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+
+/* DEMO VIDEO */
+.demo { padding: 80px 48px; background: var(--drupal-dark); color: #fff; }
+.demo-inner { max-width: 1200px; margin: 0 auto; }
+.demo-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
+.demo-video { position: relative; border-radius: 12px; overflow: hidden; background: #0e1e36; aspect-ratio: 16/9; cursor: pointer; }
+.demo-video-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(10,22,40,0.6); transition: background 0.3s; }
+.demo-video:hover .demo-video-overlay { background: rgba(10,22,40,0.4); }
+.demo-play { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; transition: all 0.3s; margin-bottom: 12px; }
+.demo-video:hover .demo-play { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.6); transform: scale(1.05); }
+.demo-play::after { content: '▶'; color: #fff; font-size: 22px; margin-left: 4px; }
+.demo-duration { font-size: 12px; color: rgba(255,255,255,0.45); }
+.demo-video-bg { position: absolute; inset: 0; }
+.demo-video-bg-bar { position: absolute; border-radius: 4px; opacity: 0.08; }
+.demo-content .section-label { color: var(--accent); }
+.demo-content h3 { font-family: var(--font-display); font-size: 32px; font-weight: 500; letter-spacing: -0.8px; margin-bottom: 16px; line-height: 1.2; }
+.demo-content p { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 28px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Drupal</span>
+  <div class="nav-links">
+    <a href="#">Product</a>
+    <a href="#">Solutions</a>
+    <a href="#">Partners</a>
+    <a href="#">Resources</a>
+  </div>
+  <a class="nav-cta" href="#">Try Drupal CMS</a>
+</nav>
+
+<!-- HERO — editorial, centred, big type -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-badge">For marketers</span>
+    <h1>Your CMS should work <em>as fast as you do</em></h1>
+    <p class="hero-sub">Drupal CMS gives marketing teams visual page building, AI content tools, and instant publishing — with the enterprise architecture your IT team demands.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#">Try it free</a>
+      <a class="btn-secondary" href="#">Watch it in action</a>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO VIDEO — right after hero -->
+<section class="demo">
+  <div class="demo-inner">
+    <div class="demo-grid">
+      <div class="demo-video">
+        <div class="demo-video-bg">
+          <div class="demo-video-bg-bar" style="width:60%;height:40px;top:30px;left:20px;background:var(--accent);"></div>
+          <div class="demo-video-bg-bar" style="width:35%;height:120px;top:90px;left:20px;background:#fff;"></div>
+          <div class="demo-video-bg-bar" style="width:35%;height:120px;top:90px;right:20px;background:#fff;"></div>
+          <div class="demo-video-bg-bar" style="width:80%;height:30px;bottom:40px;left:20px;background:var(--warm);"></div>
+        </div>
+        <div class="demo-video-overlay">
+          <div class="demo-play"></div>
+          <span class="demo-duration">2 minute walkthrough</span>
+        </div>
+      </div>
+      <div class="demo-content">
+        <div class="section-label">See it in action</div>
+        <h3>Build a landing page in minutes — no developer needed</h3>
+        <p>Watch a marketing manager create a campaign page from scratch with Drupal Canvas. Pick a layout, drop in content, preview across devices, and publish.</p>
+        <a class="btn-primary" href="#">Try it yourself</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="capabilities">
+  <div class="cap-inner">
+    <div class="section-label">What you can do</div>
+    <h2 class="section-title">Everything a marketing team needs. Nothing you don't.</h2>
+
+    <div class="cap-groups">
+      <div class="cap-group">
+        <div class="cap-text">
+          <div class="cap-label blue">Visual page building</div>
+          <h3>Drupal Canvas — build pages the way you think</h3>
+          <p>A visual editor that feels like the design tools you already use. Pick components from the library, arrange your content, see it live, and publish — all in one place.</p>
+          <div class="cap-features">
+            <div class="cap-feature"><span class="cap-check">✓</span><span>Drag-and-drop layout editor</span></div>
+            <div class="cap-feature"><span class="cap-check">✓</span><span>Pre-built, on-brand components</span></div>
+            <div class="cap-feature"><span class="cap-check">✓</span><span>Real-time preview across devices</span></div>
+            <div class="cap-feature"><span class="cap-check">✓</span><span>Publish instantly — no build step</span></div>
+          </div>
+        </div>
+        <div class="cap-visual"><div class="cap-visual-label">[ Canvas editor screenshot ]</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="capabilities" style="padding-top: 80px;">
+  <div class="cap-inner">
+    <div class="cap-groups">
+      <div class="cap-group reverse">
+        <div class="cap-text">
+          <div class="cap-label warm">AI content tools</div>
+          <h3>Write faster. Optimise smarter. Translate instantly.</h3>
+          <p>AI capabilities built into the editor — not bolted on. Generate first drafts, get SEO recommendations, and translate content across languages without switching tools.</p>
+          <div class="cap-features">
+            <div class="cap-feature"><span class="cap-check">✓</span><span>AI content generation in the editor</span></div>
+            <div class="cap-feature"><span class="cap-check">✓</span><span>SEO guidance and metadata suggestions</span></div>
+            <div class="cap-feature"><span class="cap-check">✓</span><span>One-click translation across languages</span></div>
+            <div class="cap-feature"><span class="cap-check">✓</span><span>Open AI integration — no vendor lock-in</span></div>
+          </div>
+        </div>
+        <div class="cap-visual"><div class="cap-visual-label">[ AI tools screenshot ]</div></div>
+      </div>
+
+      <div class="cap-group">
+        <div class="cap-text">
+          <div class="cap-label green">Workflows and governance</div>
+          <h3>Move fast without breaking things</h3>
+          <p>Approval workflows, content staging, role-based permissions, and design system guardrails — all built in. Your brand stays consistent and your IT team sleeps at night.</p>
+          <div class="cap-features">
+            <div class="cap-feature"><span class="cap-check">✓</span><span>Approval workflows before publishing</span></div>
+            <div class="cap-feature"><span class="cap-check">✓</span><span>Content staging and scheduling</span></div>
+            <div class="cap-feature"><span class="cap-check">✓</span><span>Role-based access control</span></div>
+            <div class="cap-feature"><span class="cap-check">✓</span><span>Design system enforcement</span></div>
+          </div>
+        </div>
+        <div class="cap-visual"><div class="cap-visual-label">[ Workflow screenshot ]</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY — proof, above testimonial -->
+<section class="case-study">
+  <div class="case-inner">
+    <div class="case-visual">
+      <span class="case-visual-label">[ Customer site screenshot ]</span>
+    </div>
+    <div class="case-content">
+      <div class="section-label">Customer story</div>
+      <h3>[Example Organisation] publishes three times more content with Drupal CMS</h3>
+      <p>Their marketing team took full ownership of the website — building and publishing pages without developer involvement for everyday content changes.</p>
+      <div class="case-stats">
+        <div class="case-stat"><div class="num">3x</div><div class="label">More content published</div></div>
+        <div class="case-stat"><div class="num">85%</div><div class="label">Fewer developer tickets</div></div>
+        <div class="case-stat"><div class="num">Same day</div><div class="label">Page turnaround</div></div>
+      </div>
+      <a class="btn-link" href="#">Read the full story →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="pull-quote">
+  <div class="pull-quote-inner">
+    <p>"Drupal CMS gave our marketing team the creative control we'd been asking for — without giving up the enterprise architecture our IT team needs."</p>
+    <cite><strong>Sarah Mitchell</strong>, Digital Marketing Director — [Example Organisation]</cite>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="resources">
+  <div class="resources-inner">
+    <div class="section-label">Resources for marketers</div>
+    <h2 class="section-title">Go deeper</h2>
+
+    <div class="resources-grid">
+      <a class="resource-link" href="#">
+        <div class="resource-icon guide">▤</div>
+        <div class="resource-text">
+          <strong>Getting started with Drupal Canvas</strong>
+          <span>Guide</span>
+        </div>
+        <span class="resource-arrow">→</span>
+      </a>
+      <a class="resource-link" href="#">
+        <div class="resource-icon video">▶</div>
+        <div class="resource-text">
+          <strong>Build a campaign page in 5 minutes</strong>
+          <span>Video walkthrough</span>
+        </div>
+        <span class="resource-arrow">→</span>
+      </a>
+      <a class="resource-link" href="#">
+        <div class="resource-icon article">◎</div>
+        <div class="resource-text">
+          <strong>AI content tools in Drupal CMS</strong>
+          <span>Article</span>
+        </div>
+        <span class="resource-arrow">→</span>
+      </a>
+      <a class="resource-link" href="#">
+        <div class="resource-icon report">⊞</div>
+        <div class="resource-text">
+          <strong>Drupal CMS for marketing teams</strong>
+          <span>Whitepaper</span>
+        </div>
+        <span class="resource-arrow">→</span>
+      </a>
+      <a class="resource-link" href="#">
+        <div class="resource-icon article">◎</div>
+        <div class="resource-text">
+          <strong>How to migrate from WordPress</strong>
+          <span>Article</span>
+        </div>
+        <span class="resource-arrow">→</span>
+      </a>
+      <a class="resource-link" href="#">
+        <div class="resource-icon guide">▤</div>
+        <div class="resource-text">
+          <strong>SEO with Drupal CMS</strong>
+          <span>Guide</span>
+        </div>
+        <span class="resource-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="section-label">Frequently asked questions</div>
+    <h2 class="section-title">What marketers want to know</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Can I build and publish pages without a developer?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Drupal Canvas is a visual drag-and-drop page builder designed for marketers. You can create pages from pre-built components, preview them across devices, and publish instantly — no code, no deployment pipeline, and no developer ticket required. Your developers define the component library and design rules; you use them freely within those guardrails.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How does Drupal CMS compare to WordPress for marketing teams?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Drupal CMS offers enterprise-grade security, built-in multilingual support, and structured content architecture that WordPress requires plugins to achieve. With Drupal Canvas, marketing teams get a visual editing experience comparable to WordPress page builders — but backed by an architecture that scales to complex, multi-site, multi-language environments without security trade-offs.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What AI capabilities are included?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Drupal CMS includes AI-powered content generation, layout suggestions, SEO optimisation assistance, and one-click translation — all built into the editor. The AI integration is open and vendor-neutral, so you're not locked into a single AI provider. Your organisation retains full control over how AI is used and what data it accesses.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Will my IT team approve this?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Drupal CMS is built on the same enterprise architecture trusted by governments, universities, and global media organisations for over 20 years. It includes role-based permissions, approval workflows, content staging, API-first architecture, and a security track record backed by over 10,000 contributors. Your IT team defines the rules; your marketing team works within them.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is Drupal CMS open source? What does that mean for us?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Drupal CMS is fully open source, which means no licensing fees, no vendor lock-in, and complete ownership of your data and platform. You can host it anywhere, customise it fully, and switch providers at any time. Open source also means a global community of contributors continuously improving the platform's security, performance, and capabilities.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How do I get started?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>You can try Drupal CMS right now in your browser — no install, no sign-up, no credit card. The browser sandbox gives you a working site in minutes so you can explore Drupal Canvas, the AI tools, and the content management interface first-hand. When you're ready to build for real, a Drupal Certified Partner can help you plan, build, and launch.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>See it for yourself</h2>
+  <p>Try Drupal CMS in your browser. Build a page in minutes. No install, no sign-up.</p>
+  <div class="cta-actions">
+    <a class="btn-primary" href="#">Try Drupal CMS free</a>
+    <a class="btn-ghost" href="#">Talk to a partner</a>
+  </div>
+</section>
+
+<!-- FIND A PARTNER -->
+<section class="partner-section">
+  <div class="partner-inner">
+    <div class="partner-text">
+      <h2>Need help getting started?</h2>
+      <p>Drupal Certified Partners are agencies and consultancies with proven Drupal expertise. They can help you plan, build, and launch your site — or migrate from your current platform.</p>
+      <a class="btn-outline" href="#">Find a partner</a>
+    </div>
+    <div class="partner-visual">
+      <span class="partner-icon">⬡</span>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="related">
+  <div class="related-inner">
+    <h2>Explore more</h2>
+    <div class="related-grid">
+      <a class="related-card" href="#">
+        <div class="label">Feature</div>
+        <h3>Drupal Canvas</h3>
+        <p>The visual page builder in Drupal CMS. Drag, drop, arrange, and publish.</p>
+      </a>
+      <a class="related-card" href="#">
+        <div class="label">Feature</div>
+        <h3>AI capabilities</h3>
+        <p>Content generation, personalisation, and smart search — built in.</p>
+      </a>
+      <a class="related-card" href="#">
+        <div class="label">Solution</div>
+        <h3>Drupal for IT leaders</h3>
+        <p>Enterprise architecture, security, and compliance — the other side of the story.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Drupal is a registered trademark of Dries Buytaert. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+</footer>
+
+</body>
+</html>

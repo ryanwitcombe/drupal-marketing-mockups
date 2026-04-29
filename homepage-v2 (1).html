@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drupal CMS — Easy to start. Impossible to outgrow.</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --drupal-blue: #0678BE;
+  --drupal-dark: #0A1628;
+  --drupal-navy: #111D33;
+  --accent: #29ABE2;
+  --warm: #E8714A;
+  --green: #2E9E6E;
+  --cream: #FAF8F5;
+  --text: #1A1A2E;
+  --text-muted: #5A6578;
+  --text-light: rgba(255,255,255,0.7);
+  --border: #E2E0DC;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; }
+
+nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; padding: 0 48px; height: 64px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--drupal-blue); margin-right: 40px; letter-spacing: -0.5px; }
+.nav-links { display: flex; gap: 32px; flex: 1; }
+.nav-links a { text-decoration: none; font-size: 14px; font-weight: 400; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { font-size: 13px; font-weight: 500; padding: 9px 22px; background: var(--drupal-blue); color: #fff; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+.nav-cta:hover { background: #055a96; }
+
+/* HERO */
+.hero { padding: 80px 48px 0; background: linear-gradient(175deg, var(--drupal-dark) 0%, var(--drupal-navy) 55%, #0A2540 100%); color: #fff; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; top: -40%; right: -15%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(41,171,226,0.12) 0%, transparent 60%); pointer-events: none; }
+.hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; text-align: center; }
+.hero h1 { font-family: var(--font-display); font-weight: 500; font-size: 56px; line-height: 1.06; letter-spacing: -2px; margin-bottom: 24px; }
+.hero h1 em { font-style: italic; font-weight: 300; color: var(--accent); }
+.hero-sub { font-size: 18px; line-height: 1.75; color: var(--text-light); max-width: 620px; margin: 0 auto 36px; }
+.hero-actions { display: flex; gap: 16px; align-items: center; justify-content: center; margin-bottom: 56px; }
+.btn-primary { font-family: var(--font-body); font-size: 15px; font-weight: 500; padding: 14px 28px; background: var(--drupal-blue); color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: #0589d6; transform: translateY(-1px); }
+.btn-ghost { font-family: var(--font-body); font-size: 15px; font-weight: 400; padding: 14px 28px; background: transparent; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+/* Hero screenshot */
+.hero-screenshot { max-width: 960px; margin: 0 auto; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px 12px 0 0; padding: 12px 12px 0; }
+.hs-toolbar { display: flex; gap: 6px; padding: 10px 14px; background: rgba(0,0,0,0.3); border-radius: 8px 8px 0 0; }
+.hs-dot { width: 8px; height: 8px; border-radius: 50%; }
+.hs-dot:nth-child(1) { background: #ff5f57; }
+.hs-dot:nth-child(2) { background: #ffbd2e; }
+.hs-dot:nth-child(3) { background: #28c840; }
+.hs-body { background: #1a2744; min-height: 280px; display: grid; grid-template-columns: 200px 1fr; }
+.hs-sidebar { padding: 16px; display: flex; flex-direction: column; gap: 6px; border-right: 1px solid rgba(255,255,255,0.06); }
+.hs-item { background: rgba(255,255,255,0.05); border-radius: 5px; padding: 8px 10px; font-size: 11px; color: rgba(255,255,255,0.4); }
+.hs-item.active { background: rgba(41,171,226,0.15); border: 1px solid rgba(41,171,226,0.25); color: var(--accent); }
+.hs-canvas { padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.hs-block { border-radius: 6px; }
+.hs-block:nth-child(1) { background: linear-gradient(135deg, rgba(41,171,226,0.2), rgba(6,120,190,0.12)); min-height: 80px; }
+.hs-block:nth-child(2) { background: rgba(255,255,255,0.03); min-height: 50px; }
+.hs-block:nth-child(3) { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.hs-mini { background: rgba(255,255,255,0.04); border-radius: 5px; min-height: 60px; }
+
+/* SOCIAL PROOF */
+.proof { padding: 40px 48px; background: var(--cream); border-bottom: 1px solid var(--border); }
+.proof-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 48px; justify-content: center; flex-wrap: wrap; }
+.proof-label { font-size: 13px; color: var(--text-muted); white-space: nowrap; }
+.proof-logos { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; justify-content: center; }
+.proof-logo { font-family: var(--font-display); font-weight: 500; font-size: 15px; color: var(--text-muted); opacity: 0.45; letter-spacing: -0.3px; }
+
+/* SECTION UTILITIES */
+.section-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; color: var(--drupal-blue); margin-bottom: 16px; }
+.section-title { font-family: var(--font-display); font-weight: 500; font-size: 38px; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px; }
+.section-desc { font-size: 17px; color: var(--text-muted); line-height: 1.7; max-width: 560px; margin-bottom: 48px; }
+
+/* THE TRADEOFF — positioning section */
+.tradeoff { padding: 100px 48px; }
+.tradeoff-inner { max-width: 1200px; margin: 0 auto; }
+.tradeoff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.tradeoff-text h2 { font-family: var(--font-display); font-size: 34px; font-weight: 500; letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 20px; }
+.tradeoff-text p { font-size: 16px; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
+.tradeoff-highlights { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+.th-item { display: flex; gap: 14px; align-items: flex-start; }
+.th-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.th-icon.blue { background: rgba(6,120,190,0.08); color: var(--drupal-blue); }
+.th-icon.warm { background: rgba(232,113,74,0.08); color: var(--warm); }
+.th-icon.green { background: rgba(46,158,110,0.08); color: var(--green); }
+.th-text h4 { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
+.th-text p { font-size: 14px; color: var(--text-muted); line-height: 1.5; margin: 0; }
+.tradeoff-visual { background: var(--drupal-dark); border-radius: 12px; min-height: 360px; display: flex; align-items: center; justify-content: center; padding: 32px; }
+.tradeoff-visual-label { font-size: 13px; color: rgba(255,255,255,0.4); }
+
+/* PRODUCT SHOWCASE */
+.showcase { padding: 100px 48px; background: var(--cream); }
+.showcase-inner { max-width: 1200px; margin: 0 auto; }
+.showcase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.showcase-card { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; text-decoration: none; color: var(--text); display: block; background: #fff; }
+.showcase-card:hover { border-color: var(--drupal-blue); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+.sc-visual { background: var(--drupal-dark); min-height: 200px; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.sc-visual-label { font-size: 13px; color: rgba(255,255,255,0.4); }
+.sc-content { padding: 28px; }
+.sc-badge { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+.sc-badge.blue { color: var(--drupal-blue); }
+.sc-badge.warm { color: var(--warm); }
+.sc-badge.green { color: var(--green); }
+.sc-content h3 { font-size: 20px; font-weight: 500; letter-spacing: -0.3px; margin-bottom: 10px; }
+.sc-content p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+.sc-link { font-size: 14px; color: var(--drupal-blue); font-weight: 500; }
+
+/* PERSONAS */
+.personas { padding: 100px 48px; }
+.personas-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+.personas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.persona-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; text-align: left; transition: all 0.3s; text-decoration: none; color: var(--text); display: block; }
+.persona-card:hover { border-color: var(--drupal-blue); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.persona-badge { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
+.persona-badge.blue { color: var(--drupal-blue); }
+.persona-badge.warm { color: var(--warm); }
+.persona-badge.green { color: var(--green); }
+.persona-card h3 { font-size: 20px; font-weight: 500; margin-bottom: 10px; letter-spacing: -0.3px; }
+.persona-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 16px; }
+.persona-link { font-size: 14px; color: var(--drupal-blue); font-weight: 500; }
+
+/* CASE STUDY */
+.case-study { padding: 80px 48px; background: var(--drupal-dark); color: #fff; }
+.case-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; }
+.case-visual { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
+.case-visual-label { font-size: 13px; color: rgba(255,255,255,0.3); }
+.case-content .section-label { color: var(--accent); }
+.case-content h3 { font-family: var(--font-display); font-size: 24px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 12px; line-height: 1.3; }
+.case-content p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 20px; }
+.case-stats { display: flex; gap: 32px; margin-bottom: 24px; }
+.case-stat .num { font-family: var(--font-display); font-size: 28px; font-weight: 500; color: var(--accent); line-height: 1; }
+.case-stat .label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+.btn-link { font-size: 14px; color: var(--accent); text-decoration: none; font-weight: 500; }
+.btn-link:hover { text-decoration: underline; }
+
+/* DCP PARTNERS */
+.partners { padding: 80px 48px; background: var(--cream); }
+.partners-inner { max-width: 1200px; margin: 0 auto; }
+.partners-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; }
+.partners-header .section-title { margin-bottom: 0; }
+.btn-outline { font-family: var(--font-body); font-size: 14px; font-weight: 500; padding: 10px 20px; background: transparent; color: var(--drupal-blue); border: 1.5px solid var(--drupal-blue); border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.btn-outline:hover { background: var(--drupal-blue); color: #fff; }
+.partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.partner-card { border: 1px solid var(--border); border-radius: 12px; padding: 28px; text-align: center; transition: all 0.2s; background: #fff; }
+.partner-card:hover { border-color: var(--drupal-blue); }
+.partner-logo { width: 64px; height: 64px; border-radius: 12px; background: var(--cream); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 14px; color: var(--text-muted); border: 1px solid var(--border); }
+.partner-card h4 { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+.partner-card p { font-size: 12px; color: var(--text-muted); }
+.partner-tier { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; color: var(--drupal-blue); margin-top: 10px; }
+
+/* FEATURED CONTENT */
+.featured { padding: 80px 48px; }
+.featured-inner { max-width: 1200px; margin: 0 auto; }
+.featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+.featured-card { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; text-decoration: none; color: var(--text); display: block; background: #fff; }
+.featured-card:hover { border-color: var(--drupal-blue); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.fc-image { background: var(--drupal-dark); min-height: 160px; display: flex; align-items: center; justify-content: center; }
+.fc-image-label { font-size: 12px; color: rgba(255,255,255,0.3); }
+.fc-content { padding: 24px; }
+.fc-tag { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; color: var(--drupal-blue); margin-bottom: 10px; }
+.fc-content h3 { font-size: 17px; font-weight: 500; letter-spacing: -0.3px; margin-bottom: 8px; line-height: 1.3; }
+.fc-content p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* CTA */
+.cta-section { padding: 100px 48px; background: linear-gradient(175deg, var(--drupal-dark) 0%, #0A2540 100%); color: #fff; text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; bottom: -40%; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(41,171,226,0.1) 0%, transparent 60%); }
+.cta-section h2 { font-family: var(--font-display); font-size: 44px; font-weight: 500; letter-spacing: -1.5px; margin-bottom: 16px; position: relative; }
+.cta-section h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+.cta-section p { font-size: 17px; color: rgba(255,255,255,0.6); margin-bottom: 36px; position: relative; max-width: 520px; margin-left: auto; margin-right: auto; }
+.cta-actions { display: flex; gap: 16px; justify-content: center; position: relative; }
+
+/* PARTNER SECTION */
+.partner-section { padding: 80px 48px; background: var(--cream); border-top: 1px solid var(--border); }
+.partner-inner { max-width: 800px; margin: 0 auto; display: flex; align-items: center; gap: 48px; }
+.partner-text { flex: 1; }
+.partner-text h2 { font-family: var(--font-display); font-size: 28px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 12px; }
+.partner-text p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+.pv { width: 200px; height: 200px; background: rgba(6,120,190,0.06); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.pv-icon { font-size: 48px; color: var(--drupal-blue); opacity: 0.3; }
+
+footer { padding: 48px; background: var(--drupal-dark); color: rgba(255,255,255,0.4); font-size: 13px; text-align: center; }
+footer a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 8px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.hero-inner > * { animation: fadeUp 0.7s ease-out both; }
+.hero-inner > *:nth-child(2) { animation-delay: 0.08s; }
+.hero-inner > *:nth-child(3) { animation-delay: 0.14s; }
+.hero-inner > *:nth-child(4) { animation-delay: 0.2s; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 24px 0; }
+  .hero h1 { font-size: 36px; }
+  .hs-body { grid-template-columns: 1fr; }
+  .hs-sidebar { display: none; }
+  .tradeoff { padding: 60px 24px; }
+  .tradeoff-grid { grid-template-columns: 1fr; }
+  .showcase { padding: 60px 24px; }
+  .showcase-grid { grid-template-columns: 1fr; }
+  .personas { padding: 60px 24px; }
+  .personas-grid { grid-template-columns: 1fr; }
+  .case-study { padding: 60px 24px; }
+  .case-inner { grid-template-columns: 1fr; }
+  .partners { padding: 60px 24px; }
+  .partners-grid { grid-template-columns: 1fr 1fr; }
+  .featured { padding: 60px 24px; }
+  .featured-grid { grid-template-columns: 1fr; }
+  .cta-section { padding: 60px 24px; }
+  .partner-inner { flex-direction: column; text-align: center; }
+  .pv { width: 120px; height: 120px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Drupal</span>
+  <div class="nav-links">
+    <a href="#">Product</a>
+    <a href="#">Solutions</a>
+    <a href="#">Partners</a>
+    <a href="#">Resources</a>
+  </div>
+  <a class="nav-cta" href="#">Try Drupal</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Easy to start.<br><em>Impossible to outgrow.</em></h1>
+    <p class="hero-sub">Every CMS forces a tradeoff: easy tools that don't scale, or powerful platforms that only developers can run. Drupal CMS ends that tradeoff. Launch in hours, not weeks — and build something you'll never outgrow.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#">Try Drupal free</a>
+      <a class="btn-ghost" href="#">Watch the demo</a>
+    </div>
+    <div class="hero-screenshot">
+      <div class="hs-toolbar">
+        <span class="hs-dot"></span><span class="hs-dot"></span><span class="hs-dot"></span>
+      </div>
+      <div class="hs-body">
+        <div class="hs-sidebar">
+          <div class="hs-item active">Hero section</div>
+          <div class="hs-item">Feature grid</div>
+          <div class="hs-item">Testimonials</div>
+          <div class="hs-item">Call to action</div>
+          <div class="hs-item">Footer</div>
+        </div>
+        <div class="hs-canvas">
+          <div class="hs-block"></div>
+          <div class="hs-block"></div>
+          <div class="hs-block">
+            <div class="hs-mini"></div>
+            <div class="hs-mini"></div>
+            <div class="hs-mini"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof">
+  <div class="proof-inner">
+    <span class="proof-label">Trusted by</span>
+    <div class="proof-logos">
+      <span class="proof-logo">UNICEF</span>
+      <span class="proof-logo">Pfizer</span>
+      <span class="proof-logo">Harvard</span>
+      <span class="proof-logo">NASA</span>
+      <span class="proof-logo">NBC</span>
+      <span class="proof-logo">The Economist</span>
+      <span class="proof-logo">Al Jazeera</span>
+      <span class="proof-logo">European Commission</span>
+    </div>
+  </div>
+</section>
+
+<!-- THE POSITIONING — why Drupal CMS is different -->
+<section class="tradeoff">
+  <div class="tradeoff-inner">
+    <div class="tradeoff-grid">
+      <div class="tradeoff-text">
+        <div class="section-label">Why Drupal CMS</div>
+        <h2>Launch professional websites in hours, not weeks</h2>
+        <p>Start with a one-click site template. Customise it with intuitive visual building tools. Go live with industry-specific best practices baked in and a suite of AI agents working alongside you from day one.</p>
+        <p>And as you grow, Drupal CMS grows with you. Backed by a global open source community, constantly improving and evolving. No vendor lock-in, no plugin sprawl, no dead ends.</p>
+        <div class="tradeoff-highlights">
+          <div class="th-item">
+            <div class="th-icon blue">⊞</div>
+            <div class="th-text">
+              <h4>One-click site templates</h4>
+              <p>Choose a template, launch, and customise. Professional sites in hours.</p>
+            </div>
+          </div>
+          <div class="th-item">
+            <div class="th-icon warm">⚡</div>
+            <div class="th-text">
+              <h4>AI agents from day one</h4>
+              <p>Content creation, SEO, translation, accessibility — built in, not bolted on.</p>
+            </div>
+          </div>
+          <div class="th-item">
+            <div class="th-icon green">↗</div>
+            <div class="th-text">
+              <h4>No ceiling</h4>
+              <p>The same platform trusted by NASA, UNICEF, and the European Commission. Start small, scale infinitely.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tradeoff-visual">
+        <div class="tradeoff-visual-label">[ Product demo / screenshot ]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT SHOWCASE -->
+<section class="showcase">
+  <div class="showcase-inner">
+    <div class="section-label">What's inside</div>
+    <h2 class="section-title">Everything you need. Nothing you don't.</h2>
+    <p class="section-desc"></p>
+
+    <div class="showcase-grid">
+      <a class="showcase-card" href="#">
+        <div class="sc-visual"><div class="sc-visual-label">[ Canvas screenshot ]</div></div>
+        <div class="sc-content">
+          <div class="sc-badge blue">Drupal Canvas</div>
+          <h3>Visual page building for everyone</h3>
+          <p>Drag-and-drop editing, pre-built components, real-time preview, instant publishing. Build pages the way you think — no code required.</p>
+          <span class="sc-link">Explore Canvas →</span>
+        </div>
+      </a>
+      <a class="showcase-card" href="#">
+        <div class="sc-visual"><div class="sc-visual-label">[ AI agents visual ]</div></div>
+        <div class="sc-content">
+          <div class="sc-badge warm">AI agents</div>
+          <h3>A suite of AI agents, ready to go</h3>
+          <p>Content generation, translation, SEO, accessibility — built in. 48 providers supported, zero lock-in. The speed of AI with the oversight your organisation requires.</p>
+          <span class="sc-link">Explore AI →</span>
+        </div>
+      </a>
+      <a class="showcase-card" href="#">
+        <div class="sc-visual"><div class="sc-visual-label">[ Recipes visual ]</div></div>
+        <div class="sc-content">
+          <div class="sc-badge green">Recipes and templates</div>
+          <h3>One-click site configurations</h3>
+          <p>Industry-specific best practices, SEO setup, content types — install once, customise forever. The fastest path from zero to a professional site.</p>
+          <span class="sc-link">Explore Recipes →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAS -->
+<section class="personas">
+  <div class="personas-inner">
+    <div class="section-label">Built for your whole team</div>
+    <h2 class="section-title" style="max-width: 100%; text-align: center;">One platform. Every role.</h2>
+
+    <div class="personas-grid">
+      <a class="persona-card" href="#">
+        <div class="persona-badge blue">For marketers</div>
+        <h3>Easy to start. Impossible to outgrow.</h3>
+        <p>Launch professional websites fast. Start with a template, customise with drag-and-drop tools, go live in hours. Create better content and move faster with built-in AI tools designed for real marketing workflows.</p>
+        <span class="persona-link">Drupal for marketers →</span>
+      </a>
+      <a class="persona-card" href="#">
+        <div class="persona-badge warm">For enterprise</div>
+        <h3>Marketers get independence. IT keeps control.</h3>
+        <p>Marketing teams build and publish without raising a ticket. IT sets the guardrails — roles, permissions, brand standards — with security and accountability built in at every layer. No proprietary lock-in.</p>
+        <span class="persona-link">Drupal for enterprise →</span>
+      </a>
+      <a class="persona-card" href="#">
+        <div class="persona-badge green">For AI builders</div>
+        <h3>The best CMS for agents to use.</h3>
+        <p>Any MCP-compatible agent connects to Drupal directly — reading content models, creating pages, managing media, respecting permissions. No Drupal knowledge required. Every action queued for human review.</p>
+        <span class="persona-link">Drupal for AI builders →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="case-study">
+  <div class="case-inner">
+    <div class="case-visual">
+      <span class="case-visual-label">[ Customer site screenshot ]</span>
+    </div>
+    <div class="case-content">
+      <div class="section-label">Customer story</div>
+      <h3>[Example Organisation] rebuilt their digital presence on Drupal CMS</h3>
+      <p>From legacy platform to modern CMS — launching faster, publishing more, and giving their marketing team full ownership of the website.</p>
+      <div class="case-stats">
+        <div class="case-stat"><div class="num">3x</div><div class="label">More content published</div></div>
+        <div class="case-stat"><div class="num">40%</div><div class="label">Lower TCO</div></div>
+        <div class="case-stat"><div class="num">Same day</div><div class="label">Page turnaround</div></div>
+      </div>
+      <a class="btn-link" href="#">Read the full story →</a>
+    </div>
+  </div>
+</section>
+
+<!-- DCP PARTNERS -->
+<section class="partners">
+  <div class="partners-inner">
+    <div class="partners-header">
+      <div>
+        <div class="section-label">Drupal Certified Partners</div>
+        <h2 class="section-title">Find the experts who build on Drupal</h2>
+      </div>
+      <a class="btn-outline" href="#">View all partners →</a>
+    </div>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-logo">A</div>
+        <h4>[Partner name]</h4>
+        <p>Enterprise CMS, migration, hosting</p>
+        <div class="partner-tier">Platinum</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo">B</div>
+        <h4>[Partner name]</h4>
+        <p>Design, development, AI integration</p>
+        <div class="partner-tier">Gold</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo">C</div>
+        <h4>[Partner name]</h4>
+        <p>Government, education, healthcare</p>
+        <div class="partner-tier">Gold</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo">D</div>
+        <h4>[Partner name]</h4>
+        <p>Headless, API-first, performance</p>
+        <div class="partner-tier">Silver</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED CONTENT -->
+<section class="featured">
+  <div class="featured-inner">
+    <div class="section-label">Insights</div>
+    <h2 class="section-title">Latest from Drupal</h2>
+
+    <div class="featured-grid">
+      <a class="featured-card" href="#">
+        <div class="fc-image"><div class="fc-image-label">[ Article image ]</div></div>
+        <div class="fc-content">
+          <div class="fc-tag">Thought leadership</div>
+          <h3>Why open source is the enterprise default in 2026</h3>
+          <p>The shift from proprietary to open is no longer a debate — it's a procurement decision.</p>
+        </div>
+      </a>
+      <a class="featured-card" href="#">
+        <div class="fc-image"><div class="fc-image-label">[ Article image ]</div></div>
+        <div class="fc-content">
+          <div class="fc-tag">Product</div>
+          <h3>What's new in Drupal CMS 2.0</h3>
+          <p>Canvas, AI agents, Recipes, and the features that make this the most significant Drupal release in a decade.</p>
+        </div>
+      </a>
+      <a class="featured-card" href="#">
+        <div class="fc-image"><div class="fc-image-label">[ Article image ]</div></div>
+        <div class="fc-content">
+          <div class="fc-tag">Customer story</div>
+          <h3>How [Organisation] migrated from WordPress in 6 weeks</h3>
+          <p>A mid-market agency's journey from WordPress security headaches to Drupal CMS stability.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Easy to start. <em>Try it now.</em></h2>
+  <p>A working Drupal CMS site in your browser in under a minute. No install, no sign-up, no credit card.</p>
+  <div class="cta-actions">
+    <a class="btn-primary" href="#">Try Drupal free</a>
+    <a class="btn-ghost" href="#">Watch the demo</a>
+  </div>
+</section>
+
+<!-- FIND A PARTNER -->
+<section class="partner-section">
+  <div class="partner-inner">
+    <div class="partner-text">
+      <h2>Need help getting started?</h2>
+      <p>Drupal Certified Partners are agencies and consultancies with proven Drupal expertise. They can help you plan, build, and launch — or migrate from your current platform.</p>
+      <a class="btn-outline" href="#">Find a partner</a>
+    </div>
+    <div class="pv">
+      <span class="pv-icon">⬡</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Drupal is a registered trademark of Dries Buytaert.</p>
+  <p style="margin-top: 8px;"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a><a href="#">Community</a><a href="#">Documentation</a></p>
+</footer>
+
+</body>
+</html>

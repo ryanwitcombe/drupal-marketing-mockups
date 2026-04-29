@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Drupal is secure — Drupal CMS</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --drupal-blue: #0678BE;
+  --drupal-dark: #0A1628;
+  --accent: #29ABE2;
+  --warm: #E8714A;
+  --green: #2E9E6E;
+  --cream: #FAF8F5;
+  --text: #1A1A2E;
+  --text-muted: #5A6578;
+  --border: #E2E0DC;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; }
+
+nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; padding: 0 48px; height: 64px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--drupal-blue); margin-right: 40px; letter-spacing: -0.5px; }
+.nav-links { display: flex; gap: 32px; flex: 1; }
+.nav-links a { text-decoration: none; font-size: 14px; font-weight: 400; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { font-size: 13px; font-weight: 500; padding: 9px 22px; background: var(--drupal-blue); color: #fff; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+
+/* PAGE HEADER */
+.page-header { padding: 80px 48px 48px; background: var(--cream); }
+.page-header-inner { max-width: 720px; margin: 0 auto; }
+.breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+.breadcrumb a { color: var(--drupal-blue); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb span { margin: 0 6px; color: var(--border); }
+.page-header h1 {
+  font-family: var(--font-display); font-weight: 500; font-size: 42px;
+  line-height: 1.12; letter-spacing: -1.5px; margin-bottom: 20px;
+}
+.page-excerpt {
+  font-size: 18px; line-height: 1.7; color: var(--text-muted);
+}
+
+/* BODY */
+.page-body { max-width: 720px; margin: 0 auto; padding: 48px 48px 0; }
+.page-content h2 {
+  font-family: var(--font-display); font-size: 28px; font-weight: 500;
+  letter-spacing: -0.5px; margin: 48px 0 16px; line-height: 1.25;
+}
+.page-content h2:first-child { margin-top: 0; }
+.page-content h3 {
+  font-size: 18px; font-weight: 500; margin: 32px 0 12px;
+}
+.page-content p {
+  font-size: 17px; line-height: 1.8; color: var(--text); margin-bottom: 24px;
+}
+.page-content blockquote {
+  font-family: var(--font-display); font-size: 22px; font-weight: 300;
+  font-style: italic; line-height: 1.5; letter-spacing: -0.3px;
+  color: var(--drupal-blue); border-left: 3px solid var(--drupal-blue);
+  padding: 4px 0 4px 24px; margin: 40px 0;
+}
+.page-content ul {
+  margin: 0 0 24px 20px; font-size: 17px; line-height: 1.8;
+}
+.page-content ul li { margin-bottom: 8px; }
+.page-content a { color: var(--drupal-blue); }
+
+/* CALLOUT BOX — for key stats or takeaways */
+.callout {
+  background: var(--cream); border-radius: 12px; padding: 28px 32px;
+  margin: 40px 0; border-left: 4px solid var(--drupal-blue);
+}
+.callout h4 { font-size: 15px; font-weight: 500; margin-bottom: 10px; }
+.callout p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin: 0; }
+.callout ul { margin: 10px 0 0 20px; font-size: 15px; line-height: 1.7; color: var(--text-muted); }
+
+/* DCP ATTRIBUTION BANNER */
+.dcp-banner {
+  max-width: 720px; margin: 0 auto; padding: 0 48px;
+}
+.dcp-banner-inner {
+  background: linear-gradient(135deg, var(--drupal-dark) 0%, #0e2a4a 100%);
+  border-radius: 16px; padding: 36px 40px;
+  display: flex; align-items: center; gap: 28px;
+  position: relative; overflow: hidden;
+}
+.dcp-banner-inner::before {
+  content: ''; position: absolute; top: -50%; right: -20%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(41,171,226,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.dcp-banner-logo {
+  width: 72px; height: 72px; border-radius: 14px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 22px; color: rgba(255,255,255,0.6);
+  flex-shrink: 0; position: relative;
+}
+.dcp-banner-info { flex: 1; position: relative; }
+.dcp-banner-label {
+  font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px;
+  color: var(--accent); margin-bottom: 8px;
+}
+.dcp-banner-name {
+  font-size: 18px; font-weight: 500; color: #fff; margin-bottom: 4px;
+}
+.dcp-banner-desc {
+  font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.5;
+}
+.dcp-banner-tier {
+  display: inline-block; font-size: 10px; font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.5px; padding: 4px 10px; border-radius: 6px;
+  margin-top: 10px;
+}
+.dcp-tier-platinum { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.15); }
+.dcp-tier-gold { background: rgba(239,159,39,0.15); color: #EF9F27; border: 1px solid rgba(239,159,39,0.25); }
+.dcp-tier-silver { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.1); }
+.dcp-banner-link {
+  font-size: 13px; font-weight: 500; color: var(--accent);
+  text-decoration: none; flex-shrink: 0; position: relative;
+  padding: 10px 20px; border: 1px solid rgba(41,171,226,0.3);
+  border-radius: 8px; transition: all 0.2s;
+}
+.dcp-banner-link:hover { background: rgba(41,171,226,0.1); border-color: var(--accent); }
+
+/* CTA INLINE — for mid-page conversion */
+.cta-inline {
+  max-width: 720px; margin: 0 auto; padding: 48px 48px;
+}
+.cta-inline-inner {
+  background: var(--cream); border: 1px solid var(--border); border-radius: 12px;
+  padding: 36px; text-align: center;
+}
+.cta-inline-inner h3 {
+  font-family: var(--font-display); font-size: 24px; font-weight: 500;
+  letter-spacing: -0.5px; margin-bottom: 10px;
+}
+.cta-inline-inner p { font-size: 15px; color: var(--text-muted); margin-bottom: 24px; }
+.btn-primary { font-family: var(--font-body); font-size: 15px; font-weight: 500; padding: 14px 28px; background: var(--drupal-blue); color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: #0589d6; transform: translateY(-1px); }
+
+/* RELATED */
+.related { padding: 80px 48px; background: var(--cream); }
+.related-inner { max-width: 1200px; margin: 0 auto; }
+.related h2 { font-family: var(--font-display); font-size: 28px; font-weight: 500; letter-spacing: -0.5px; margin-bottom: 36px; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.related-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 28px; transition: all 0.3s; text-decoration: none; color: var(--text); display: block; }
+.related-card:hover { border-color: var(--drupal-blue); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.related-card .label { font-size: 12px; color: var(--drupal-blue); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+.related-card h3 { font-size: 17px; font-weight: 500; letter-spacing: -0.3px; margin-bottom: 8px; line-height: 1.3; }
+.related-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+footer { padding: 48px; background: var(--drupal-dark); color: rgba(255,255,255,0.4); font-size: 13px; text-align: center; }
+footer a { color: rgba(255,255,255,0.6); text-decoration: none; margin: 0 8px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.page-header-inner > * { animation: fadeUp 0.6s ease-out both; }
+.page-header-inner > *:nth-child(2) { animation-delay: 0.06s; }
+.page-header-inner > *:nth-child(3) { animation-delay: 0.1s; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .page-header { padding: 60px 24px 36px; }
+  .page-header h1 { font-size: 32px; }
+  .page-body { padding: 36px 24px 0; }
+  .dcp-banner { padding: 0 24px; }
+  .dcp-banner-inner { flex-direction: column; text-align: center; padding: 28px; }
+  .dcp-banner-link { margin-top: 12px; }
+  .cta-inline { padding: 36px 24px; }
+  .related { padding: 60px 24px; }
+  .related-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Drupal</span>
+  <div class="nav-links">
+    <a href="#">Product</a>
+    <a href="#">Solutions</a>
+    <a href="#">Partners</a>
+    <a href="#">Resources</a>
+  </div>
+  <a class="nav-cta" href="#">Try Drupal</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="#">Product</a> <span>/</span> <a href="#">Enterprise</a> <span>/</span> Security</div>
+    <h1>Why Drupal is secure</h1>
+    <p class="page-excerpt">How open source security works, why it's stronger than proprietary alternatives, and what makes Drupal one of the most trusted platforms for governments, healthcare, and critical infrastructure.</p>
+  </div>
+</section>
+
+<!-- BODY -->
+<div class="page-body">
+  <div class="page-content">
+    <h2>The open source security model</h2>
+    <p>There's a persistent myth that proprietary software is more secure because the code is hidden. The opposite is true. Security through obscurity has been discredited for decades. Open source security works because thousands of independent eyes review the code, vulnerabilities are found and patched faster, and the entire process is transparent and auditable.</p>
+    <p>Drupal's security model is one of the most rigorous in the CMS world. The Drupal Security Team — a dedicated group of volunteers and professionals — reviews every reported vulnerability, coordinates responsible disclosure, and issues security advisories on a regular schedule. This team has been operating for over 15 years.</p>
+
+    <div class="callout">
+      <h4>Drupal security by the numbers</h4>
+      <ul>
+        <li>10,000+ contributors with security expertise</li>
+        <li>Dedicated Security Team with 15+ years of operation</li>
+        <li>Regular security release schedule with advance notice</li>
+        <li>CVE response times consistently faster than proprietary CMS vendors</li>
+        <li>Used by 13+ US government agencies, the European Commission, and NATO</li>
+      </ul>
+    </div>
+
+    <h2>Why governments choose Drupal</h2>
+    <p>Drupal is the most widely used CMS in government. The US White House, the European Commission, the Australian government, and dozens of others run on Drupal — not because it's free, but because it meets their security and compliance requirements in ways proprietary platforms cannot.</p>
+    <p>Government security teams need to audit the code running their websites. With proprietary platforms, they can't — the code is a black box. With Drupal, every line is visible, every patch is documented, and every vulnerability disclosure is public. That transparency isn't a risk. It's a requirement.</p>
+
+    <blockquote>Open source doesn't mean less secure. It means verifiably secure.</blockquote>
+
+    <h2>How Drupal handles security at scale</h2>
+    <p>Large organisations running Drupal benefit from several security capabilities built into the platform:</p>
+    <ul>
+      <li><strong>Granular permissions.</strong> Role-based access control at every level — from content types to individual fields. Users only see and do what they're authorised to.</li>
+      <li><strong>Security advisories.</strong> The Drupal Security Team publishes advisories on a regular schedule with advance notice, giving teams time to plan updates.</li>
+      <li><strong>Content staging.</strong> Preview and test changes in a staging environment before publishing to production. No untested code reaches your live site.</li>
+      <li><strong>Audit trails.</strong> Full revision history on all content. Every change is logged, attributed, and reversible.</li>
+      <li><strong>API security.</strong> Drupal's API-first architecture includes authentication, rate limiting, and CORS configuration out of the box.</li>
+    </ul>
+
+    <h2>Compared to proprietary CMS platforms</h2>
+    <p>When organisations evaluate Drupal against Sitecore, Adobe Experience Manager, or Optimizely, security often comes up as a concern. The data tells a different story.</p>
+    <p>Proprietary platforms have had major vulnerabilities too — the difference is that when they do, you're dependent on a single vendor to find, fix, and disclose them. With Drupal, the entire community is part of the security infrastructure. Vulnerabilities are found faster, patches ship faster, and the process is transparent.</p>
+    <p>There's also the sovereignty argument. With a proprietary CMS, the vendor controls your security posture. They decide when patches ship, how vulnerabilities are disclosed, and whether your version is still supported. With Drupal, you control the timeline, the hosting, and the update cycle. Your security is in your hands.</p>
+
+    <h3>The bottom line</h3>
+    <p>Drupal doesn't just meet enterprise security standards — it was built for them. The open source model isn't a trade-off against security. It's the reason Drupal is trusted where failure is not an option.</p>
+  </div>
+</div>
+
+<!-- DCP ATTRIBUTION BANNER -->
+<div class="dcp-banner" style="margin-top: 48px;">
+  <div class="dcp-banner-inner">
+    <div class="dcp-banner-logo">A</div>
+    <div class="dcp-banner-info">
+      <div class="dcp-banner-label">This content is provided by</div>
+      <div class="dcp-banner-name">[Partner Name]</div>
+      <div class="dcp-banner-desc">Enterprise Drupal security specialists. Trusted by government, healthcare, and financial services organisations across Europe and North America.</div>
+      <div class="dcp-banner-tier dcp-tier-platinum">Platinum partner</div>
+    </div>
+    <a class="dcp-banner-link" href="#">View profile →</a>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-inline">
+  <div class="cta-inline-inner">
+    <h3>See Drupal's security for yourself</h3>
+    <p>Try Drupal CMS in your browser — explore permissions, content staging, and the admin interface first-hand.</p>
+    <a class="btn-primary" href="#">Try Drupal free</a>
+  </div>
+</div>
+
+<!-- RELATED -->
+<section class="related">
+  <div class="related-inner">
+    <h2>Related</h2>
+    <div class="related-grid">
+      <a class="related-card" href="#">
+        <div class="label">Information</div>
+        <h3>Total cost of ownership: Drupal vs proprietary CMS</h3>
+        <p>Licensing, migration penalties, forced upgrades — what the proprietary sales pitch doesn't mention.</p>
+      </a>
+      <a class="related-card" href="#">
+        <div class="label">Information</div>
+        <h3>Migrating from WordPress to Drupal</h3>
+        <p>A practical guide to moving your site — content, users, and configuration — from WordPress to Drupal CMS.</p>
+      </a>
+      <a class="related-card" href="#">
+        <div class="label">Solution</div>
+        <h3>Drupal for IT leaders</h3>
+        <p>Enterprise architecture, compliance, and the security model IT teams trust.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Drupal is a registered trademark of Dries Buytaert.</p>
+  <p style="margin-top: 8px;"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a><a href="#">Community</a><a href="#">Documentation</a></p>
+</footer>
+
+</body>
+</html>
