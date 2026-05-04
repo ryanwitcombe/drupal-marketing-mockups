@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dev.drupal.org — The home of the Drupal project</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --drupal-blue: #0678BE;
+  --drupal-dark: #0A1628;
+  --drupal-navy: #111D33;
+  --accent: #29ABE2;
+  --warm: #E8714A;
+  --green: #2E9E6E;
+  --purple: #7F77DD;
+  --cream: #FAF8F5;
+  --text: #1A1A2E;
+  --text-muted: #5A6578;
+  --text-light: rgba(255,255,255,0.7);
+  --border: #E2E0DC;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; -webkit-font-smoothing: antialiased; }
+
+/* TOP BRIDGE BANNER */
+.top-bridge { background: var(--drupal-dark); color: rgba(255,255,255,0.75); padding: 9px 48px; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.top-bridge-here { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-weight: 500; }
+.top-bridge-here::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; box-shadow: 0 0 0 3px rgba(46,158,110,0.25); }
+.top-bridge-divider { color: rgba(255,255,255,0.2); }
+.top-bridge a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+.top-bridge a:hover { color: #fff; }
+.top-bridge a::after { content: ' →'; opacity: 0.6; }
+
+/* NAV */
+nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; padding: 0 48px; height: 64px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--drupal-blue); margin-right: 6px; letter-spacing: -0.5px; }
+.nav-sub { font-size: 14px; color: var(--text-muted); font-weight: 400; margin-right: 36px; }
+.nav-links { display: flex; gap: 28px; flex: 1; }
+.nav-links a { text-decoration: none; font-size: 14px; font-weight: 400; color: var(--text-muted); transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-right { display: flex; gap: 12px; align-items: center; }
+.nav-search { padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border); font-size: 13px; font-family: var(--font-body); color: var(--text); width: 200px; outline: none; background: #fff; }
+.nav-search::placeholder { color: var(--text-muted); }
+.nav-search:focus { border-color: var(--drupal-blue); }
+.nav-login { font-size: 13px; font-weight: 500; padding: 7px 18px; border-radius: 6px; border: 1px solid var(--border); background: #fff; color: var(--text); cursor: pointer; transition: all 0.2s; text-decoration: none; }
+.nav-login:hover { border-color: var(--drupal-blue); color: var(--drupal-blue); }
+
+/* HERO */
+.hero { padding: 80px 48px 72px; background: var(--drupal-dark); color: #fff; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; top: -40%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(41,171,226,0.08) 0%, transparent 60%); pointer-events: none; }
+.hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 20px; padding: 6px 12px; background: rgba(41,171,226,0.08); border: 1px solid rgba(41,171,226,0.2); border-radius: 100px; }
+.hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; box-shadow: 0 0 0 3px rgba(46,158,110,0.2); }
+.hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
+.hero h1 { font-family: var(--font-display); font-weight: 500; font-size: 48px; line-height: 1.05; letter-spacing: -1.6px; margin-bottom: 22px; }
+.hero h1 em { font-style: italic; font-weight: 300; color: var(--accent); }
+.hero-sub { font-size: 17px; line-height: 1.7; color: var(--text-light); margin-bottom: 32px; max-width: 500px; }
+.hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.btn-primary { font-family: var(--font-body); font-size: 14px; font-weight: 500; padding: 12px 24px; background: var(--drupal-blue); color: #fff; border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: #0589d6; transform: translateY(-1px); }
+.btn-ghost { font-family: var(--font-body); font-size: 14px; font-weight: 400; padding: 12px 24px; background: transparent; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+/* Hero terminal mockup */
+.terminal { background: #0e1e36; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); overflow: hidden; font-family: var(--font-mono); font-size: 13px; box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+.terminal-bar { display: flex; gap: 6px; padding: 10px 14px; background: rgba(0,0,0,0.3); align-items: center; }
+.terminal-dot { width: 8px; height: 8px; border-radius: 50%; }
+.terminal-dot:nth-child(1) { background: #ff5f57; }
+.terminal-dot:nth-child(2) { background: #ffbd2e; }
+.terminal-dot:nth-child(3) { background: #28c840; }
+.terminal-title { margin-left: 12px; font-size: 11px; color: rgba(255,255,255,0.4); }
+.terminal-body { padding: 18px; line-height: 1.85; }
+.t-prompt { color: var(--green); }
+.t-cmd { color: rgba(255,255,255,0.85); }
+.t-comment { color: rgba(255,255,255,0.3); }
+.t-output { color: rgba(255,255,255,0.5); }
+.t-success { color: var(--green); }
+.t-link { color: var(--accent); }
+.cursor-blink { display: inline-block; width: 7px; height: 14px; background: var(--accent); margin-left: 2px; animation: blink 1s infinite; vertical-align: middle; }
+@keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+/* Hero stats strip */
+.hero-stats { margin-top: 56px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.hs-num { font-family: var(--font-display); font-weight: 500; font-size: 28px; color: #fff; letter-spacing: -0.6px; line-height: 1; margin-bottom: 6px; }
+.hs-label { font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.6px; }
+
+/* QUICK LINKS */
+.quick-links { padding: 0 48px; margin-top: -32px; position: relative; z-index: 2; }
+.quick-links-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.ql-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: all 0.2s; text-decoration: none; color: var(--text); display: block; }
+.ql-card:hover { border-color: var(--drupal-blue); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.ql-icon { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.ql-icon.blue { background: rgba(6,120,190,0.08); color: var(--drupal-blue); }
+.ql-icon.green { background: rgba(46,158,110,0.08); color: var(--green); }
+.ql-icon.warm { background: rgba(232,113,74,0.08); color: var(--warm); }
+.ql-icon.purple { background: rgba(127,119,221,0.08); color: var(--purple); }
+.ql-card h3 { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+.ql-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+/* SECTION UTILITIES */
+.section-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; color: var(--drupal-blue); margin-bottom: 16px; }
+.section-title { font-family: var(--font-display); font-weight: 500; font-size: 34px; letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px; }
+.section-title em { font-style: italic; font-weight: 300; }
+.section-intro { font-size: 16px; color: var(--text-muted); line-height: 1.65; max-width: 580px; }
+.section-header-flex { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 36px; gap: 32px; }
+.btn-outline { font-family: var(--font-body); font-size: 13px; font-weight: 500; padding: 9px 20px; background: transparent; color: var(--drupal-blue); border: 1.5px solid var(--drupal-blue); border-radius: 8px; text-decoration: none; display: inline-block; transition: all 0.2s; flex-shrink: 0; }
+.btn-outline:hover { background: var(--drupal-blue); color: #fff; }
+
+/* NEW TO DRUPAL — enticement section */
+.new-to-drupal { padding: 96px 48px 88px; background: linear-gradient(180deg, #fff 0%, var(--cream) 100%); }
+.ntd-inner { max-width: 1200px; margin: 0 auto; }
+.ntd-header { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; margin-bottom: 48px; }
+.ntd-header-left .section-label { color: var(--green); }
+.ntd-header h2 { font-family: var(--font-display); font-weight: 500; font-size: 38px; line-height: 1.1; letter-spacing: -1.2px; margin-bottom: 0; }
+.ntd-header h2 em { font-style: italic; font-weight: 300; color: var(--drupal-blue); }
+.ntd-header-right p { font-size: 16px; line-height: 1.7; color: var(--text-muted); }
+.ntd-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 20px; }
+.ntd-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 32px; transition: all 0.25s; text-decoration: none; color: var(--text); display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.ntd-card:hover { border-color: var(--drupal-blue); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+.ntd-card-feature { background: var(--drupal-dark); color: #fff; border-color: var(--drupal-dark); position: relative; }
+.ntd-card-feature::before { content: ''; position: absolute; top: -30%; right: -20%; width: 360px; height: 360px; background: radial-gradient(circle, rgba(46,158,110,0.15) 0%, transparent 60%); pointer-events: none; }
+.ntd-card-feature:hover { background: #0c1c33; border-color: #0c1c33; }
+.ntd-time-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 100px; margin-bottom: 18px; align-self: flex-start; }
+.ntd-time-pill.feature { background: rgba(46,158,110,0.2); color: #5cc796; }
+.ntd-time-pill.standard { background: rgba(6,120,190,0.08); color: var(--drupal-blue); }
+.ntd-card-feature h3 { font-family: var(--font-display); font-size: 28px; font-weight: 500; line-height: 1.15; letter-spacing: -0.6px; margin-bottom: 14px; position: relative; z-index: 1; color: #fff; }
+.ntd-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 500; line-height: 1.2; letter-spacing: -0.4px; margin-bottom: 10px; }
+.ntd-card-feature p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 24px; position: relative; z-index: 1; }
+.ntd-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 22px; }
+.ntd-features { list-style: none; padding: 0; margin: 0 0 24px; display: flex; flex-direction: column; gap: 8px; position: relative; z-index: 1; }
+.ntd-features li { font-size: 13px; padding-left: 22px; position: relative; line-height: 1.5; }
+.ntd-card-feature .ntd-features li { color: rgba(255,255,255,0.7); }
+.ntd-card-feature .ntd-features li::before { color: #5cc796; }
+.ntd-features li::before { content: '→'; position: absolute; left: 0; color: var(--drupal-blue); font-weight: 600; }
+.ntd-cta-link { font-size: 14px; color: var(--drupal-blue); font-weight: 500; margin-top: auto; padding-top: 4px; }
+.ntd-cta-link::after { content: ' →'; opacity: 0.7; }
+.ntd-cta-link-feature { font-size: 14px; color: var(--accent); font-weight: 500; margin-top: auto; padding-top: 4px; position: relative; z-index: 1; }
+.ntd-cta-link-feature::after { content: ' →'; opacity: 0.8; }
+
+/* COMING FROM ANOTHER PLATFORM */
+.from-platform { padding: 88px 48px; background: #fff; }
+.fp-inner { max-width: 1200px; margin: 0 auto; }
+.fp-header { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+.fp-header .section-title { font-size: 40px; letter-spacing: -1.2px; }
+.fp-header .section-intro { margin: 0 auto; }
+.fp-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.fp-card { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 24px 20px; text-decoration: none; color: var(--text); transition: all 0.2s; display: block; }
+.fp-card:hover { background: #fff; border-color: var(--drupal-blue); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.05); }
+.fp-logo { width: 40px; height: 40px; border-radius: 10px; background: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 600; font-size: 16px; margin-bottom: 14px; border: 1px solid var(--border); }
+.fp-logo.wp { color: #21759b; }
+.fp-logo.sc { color: #d4302a; }
+.fp-logo.aem { color: #fa0f00; font-size: 13px; }
+.fp-logo.op { color: #1f3855; }
+.fp-logo.st { color: var(--purple); font-family: var(--font-mono); font-size: 12px; }
+.fp-card h4 { font-size: 14px; font-weight: 500; margin-bottom: 6px; letter-spacing: -0.1px; }
+.fp-card p { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+/* ABOUT THE PROJECT — major section */
+.about-project { padding: 96px 48px 80px; }
+.about-inner { max-width: 1200px; margin: 0 auto; }
+.about-header { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+.about-header .section-intro { margin: 0 auto; }
+.about-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+.about-cell { padding: 28px 28px 32px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: background 0.2s; cursor: pointer; text-decoration: none; color: var(--text); display: block; }
+.about-cell:hover { background: var(--cream); }
+.about-cell-icon { width: 36px; height: 36px; border-radius: 8px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-family: var(--font-mono); font-weight: 500; }
+.about-cell-icon.blue { background: rgba(6,120,190,0.1); color: var(--drupal-blue); }
+.about-cell-icon.green { background: rgba(46,158,110,0.1); color: var(--green); }
+.about-cell-icon.warm { background: rgba(232,113,74,0.1); color: var(--warm); }
+.about-cell-icon.purple { background: rgba(127,119,221,0.1); color: var(--purple); }
+.about-cell h3 { font-size: 16px; font-weight: 500; margin-bottom: 6px; letter-spacing: -0.2px; }
+.about-cell p { font-size: 13px; color: var(--text-muted); line-height: 1.55; margin-bottom: 12px; }
+.about-cell-link { font-size: 12px; color: var(--drupal-blue); font-weight: 500; }
+.about-cell-link::after { content: ' →'; opacity: 0.6; }
+
+/* CONTRIBUTION SECTION */
+.contribution { padding: 96px 48px; background: var(--cream); }
+.contrib-inner { max-width: 1200px; margin: 0 auto; }
+.contrib-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+.contrib-left .section-title { margin-bottom: 18px; }
+.contrib-quote { font-family: var(--font-display); font-style: italic; font-size: 17px; line-height: 1.5; color: var(--text); margin: 24px 0 16px; padding-left: 18px; border-left: 2px solid var(--drupal-blue); font-weight: 400; }
+.contrib-quote-by { font-size: 13px; color: var(--text-muted); margin-bottom: 28px; }
+.contrib-paths { display: flex; flex-direction: column; gap: 14px; }
+.contrib-path { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 24px 26px; display: grid; grid-template-columns: 64px 1fr auto; gap: 20px; align-items: center; text-decoration: none; color: var(--text); transition: all 0.2s; }
+.contrib-path:hover { border-color: var(--drupal-blue); transform: translateX(2px); }
+.contrib-path-num { font-family: var(--font-display); font-weight: 500; font-size: 32px; color: var(--drupal-blue); letter-spacing: -1px; line-height: 1; }
+.contrib-path-body h4 { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+.contrib-path-body p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.contrib-path-arrow { color: var(--text-muted); font-size: 16px; }
+.contrib-path:hover .contrib-path-arrow { color: var(--drupal-blue); transform: translateX(2px); transition: transform 0.2s; }
+
+/* ACTIVITY FEED */
+.activity { padding: 64px 48px; }
+.activity-inner { max-width: 1200px; margin: 0 auto; }
+.activity-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 32px; margin-top: 32px; align-items: start; }
+.activity-list { display: flex; flex-direction: column; gap: 0; background: var(--cream); border-radius: 12px; padding: 8px 24px; }
+.activity-item { display: flex; gap: 14px; padding: 18px 0; border-bottom: 0.5px solid rgba(0,0,0,0.06); }
+.activity-item:last-child { border-bottom: none; }
+.activity-avatar { width: 32px; height: 32px; border-radius: 50%; background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: var(--text-muted); flex-shrink: 0; }
+.activity-content { flex: 1; min-width: 0; }
+.activity-text { font-size: 14px; line-height: 1.5; }
+.activity-text strong { font-weight: 500; }
+.activity-text a { color: var(--drupal-blue); text-decoration: none; }
+.activity-text a:hover { text-decoration: underline; }
+.activity-time { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+.activity-type { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.4px; padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+.at-commit { background: rgba(46,158,110,0.1); color: var(--green); }
+.at-issue { background: rgba(6,120,190,0.1); color: var(--drupal-blue); }
+.at-release { background: rgba(232,113,74,0.1); color: var(--warm); }
+.at-security { background: rgba(232,113,74,0.15); color: var(--warm); }
+.at-discussion { background: rgba(127,119,221,0.1); color: var(--purple); }
+
+/* STATS SIDEBAR */
+.stats-sidebar { display: flex; flex-direction: column; gap: 12px; }
+.stat-card { background: var(--cream); border-radius: 10px; padding: 18px 22px; }
+.stat-num { font-family: var(--font-display); font-size: 26px; font-weight: 500; color: var(--text); margin-bottom: 2px; letter-spacing: -0.4px; }
+.stat-label { font-size: 13px; color: var(--text-muted); }
+.stat-trend { display: inline-block; font-size: 11px; color: var(--green); margin-left: 8px; font-weight: 500; }
+
+/* MARKETPLACE */
+.marketplace { padding: 96px 48px; background: var(--drupal-dark); color: #fff; }
+.marketplace-inner { max-width: 1200px; margin: 0 auto; }
+.marketplace-header { text-align: center; max-width: 700px; margin: 0 auto 56px; }
+.marketplace-header .section-label { color: var(--accent); }
+.marketplace-header h2 { font-family: var(--font-display); font-weight: 500; font-size: 38px; letter-spacing: -1.2px; line-height: 1.1; margin-bottom: 16px; color: #fff; }
+.marketplace-header h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+.marketplace-header p { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+.marketplace-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.mp-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 32px; transition: all 0.25s; text-decoration: none; color: #fff; display: block; position: relative; overflow: hidden; }
+.mp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(41,171,226,0.4), transparent); opacity: 0; transition: opacity 0.3s; }
+.mp-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(41,171,226,0.3); transform: translateY(-2px); }
+.mp-card:hover::before { opacity: 1; }
+.mp-tag { display: inline-block; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.6px; padding: 4px 10px; border-radius: 100px; margin-bottom: 18px; }
+.mp-tag.partners { background: rgba(41,171,226,0.15); color: var(--accent); }
+.mp-tag.hosting { background: rgba(46,158,110,0.15); color: #5cc796; }
+.mp-tag.templates { background: rgba(232,113,74,0.15); color: #f1957a; }
+.mp-tag.jobs { background: rgba(127,119,221,0.18); color: #a8a1ed; }
+.mp-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 500; margin-bottom: 10px; letter-spacing: -0.4px; }
+.mp-card p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.65; margin-bottom: 24px; }
+.mp-meta { display: flex; gap: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.06); }
+.mp-meta-item { font-size: 12px; color: rgba(255,255,255,0.5); }
+.mp-meta-num { font-family: var(--font-display); font-size: 18px; font-weight: 500; color: #fff; display: block; margin-bottom: 2px; letter-spacing: -0.3px; }
+.mp-link { font-size: 13px; color: var(--accent); font-weight: 500; margin-top: 18px; display: inline-block; }
+.mp-link::after { content: ' →'; opacity: 0.7; }
+
+/* MARKETPLACE — Jobs subsection */
+.mp-jobs { margin-top: 56px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.08); }
+.mp-jobs-header { display: grid; grid-template-columns: 1.5fr auto; gap: 32px; align-items: end; margin-bottom: 28px; }
+.mp-jobs-title { font-family: var(--font-display); font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.6px; color: #fff; margin: 12px 0 8px; }
+.mp-jobs-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+.mp-jobs-sub { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 540px; }
+.mp-jobs-cta-pair { display: flex; gap: 10px; flex-shrink: 0; }
+.mp-jobs-btn-primary { font-size: 13px; font-weight: 500; padding: 10px 20px; background: var(--drupal-blue); color: #fff; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+.mp-jobs-btn-primary:hover { background: #0589d6; }
+.mp-jobs-btn-ghost { font-size: 13px; font-weight: 500; padding: 10px 20px; background: transparent; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+.mp-jobs-btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+.mp-jobs-listings { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; }
+.mp-job-row { padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.06); display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; text-decoration: none; transition: background 0.2s; }
+.mp-job-row:last-child { border-bottom: none; }
+.mp-job-row:hover { background: rgba(255,255,255,0.04); }
+.mp-job-info h4 { font-size: 14px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+.mp-job-meta { font-size: 12px; color: rgba(255,255,255,0.5); display: flex; gap: 12px; flex-wrap: wrap; }
+.mp-job-meta span:not(:first-child)::before { content: '·'; margin-right: 12px; opacity: 0.5; }
+.mp-job-tags { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.mp-job-tag { font-size: 10px; font-weight: 500; padding: 3px 9px; border-radius: 100px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); white-space: nowrap; }
+.mp-job-tag.remote { background: rgba(46,158,110,0.18); color: #5cc796; }
+.mp-job-tag.senior { background: rgba(127,119,221,0.18); color: #a8a1ed; }
+.mp-job-tag.contract { background: rgba(232,113,74,0.18); color: #f1957a; }
+.mp-jobs-footer { text-align: center; margin-top: 24px; }
+.mp-jobs-all-link { font-size: 13px; color: var(--accent); text-decoration: none; font-weight: 500; }
+.mp-jobs-all-link:hover { text-decoration: underline; }
+
+/* STEWARD & UPSTREAM SUPPORT */
+.security { padding: 64px 48px; background: #fff; }
+.security-inner { max-width: 1200px; margin: 0 auto; }
+.security-header { margin-bottom: 28px; }
+.security-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.sec-card { border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; position: relative; overflow: hidden; transition: all 0.2s; text-decoration: none; color: var(--text); display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; }
+.sec-card:hover { border-color: var(--drupal-blue); }
+.sec-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
+.sec-card.steward::before { background: var(--warm); }
+.sec-card.upstream::before { background: var(--green); }
+.sec-shield { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.sec-shield.steward { background: rgba(232,113,74,0.1); color: var(--warm); }
+.sec-shield.upstream { background: rgba(46,158,110,0.1); color: var(--green); }
+.sec-body h3 { font-family: var(--font-display); font-size: 18px; font-weight: 500; margin-bottom: 4px; letter-spacing: -0.3px; }
+.sec-body p { font-size: 13px; color: var(--text-muted); line-height: 1.5; margin: 0; }
+.sec-arrow { font-size: 16px; color: var(--text-muted); flex-shrink: 0; }
+.sec-card:hover .sec-arrow { color: var(--drupal-blue); transform: translateX(2px); transition: all 0.2s; }
+
+/* EVENTS — feature one big, list others */
+.events { padding: 96px 48px; background: var(--cream); }
+.events-inner { max-width: 1200px; margin: 0 auto; }
+.events-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; margin-top: 40px; }
+.event-feature { background: linear-gradient(135deg, var(--drupal-dark) 0%, var(--drupal-navy) 100%); color: #fff; border-radius: 14px; padding: 40px; position: relative; overflow: hidden; text-decoration: none; display: block; transition: transform 0.25s; }
+.event-feature::after { content: ''; position: absolute; top: -30%; right: -10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(41,171,226,0.12) 0%, transparent 60%); pointer-events: none; }
+.event-feature:hover { transform: translateY(-2px); }
+.event-feature-tag { display: inline-block; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 11px; background: rgba(232,113,74,0.2); color: #f1957a; border-radius: 100px; margin-bottom: 20px; }
+.event-feature h3 { font-family: var(--font-display); font-size: 32px; font-weight: 500; line-height: 1.15; letter-spacing: -0.8px; margin-bottom: 12px; position: relative; z-index: 1; }
+.event-feature-meta { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 18px; position: relative; z-index: 1; }
+.event-feature-meta span { margin-right: 18px; }
+.event-feature-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 28px; max-width: 420px; position: relative; z-index: 1; }
+.event-feature-cta { display: inline-block; padding: 11px 22px; background: var(--drupal-blue); color: #fff; border-radius: 8px; font-size: 14px; font-weight: 500; position: relative; z-index: 1; }
+.events-list-side { display: flex; flex-direction: column; gap: 12px; }
+.event-side { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; display: flex; gap: 16px; align-items: center; text-decoration: none; color: var(--text); transition: all 0.2s; }
+.event-side:hover { border-color: var(--drupal-blue); transform: translateX(2px); }
+.event-side-date { text-align: center; flex-shrink: 0; width: 48px; padding: 8px 0; background: var(--cream); border-radius: 8px; }
+.event-side-month { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--drupal-blue); }
+.event-side-day { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--text); line-height: 1; }
+.event-side-info { flex: 1; min-width: 0; }
+.event-side-info h4 { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+.event-side-info p { font-size: 12px; color: var(--text-muted); }
+.events-cta { text-align: center; margin-top: 32px; }
+
+/* GET INVOLVED CTA */
+.get-involved { padding: 100px 48px; background: var(--drupal-dark); color: #fff; position: relative; overflow: hidden; }
+.get-involved::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(6,120,190,0.15) 0%, transparent 50%); pointer-events: none; }
+.gi-inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.gi-inner h2 { font-family: var(--font-display); font-size: 44px; font-weight: 500; letter-spacing: -1.4px; line-height: 1.1; margin-bottom: 18px; }
+.gi-inner h2 em { font-style: italic; font-weight: 300; color: var(--accent); }
+.gi-sub { font-size: 17px; color: rgba(255,255,255,0.65); margin-bottom: 36px; max-width: 580px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+.gi-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* PRODUCT SITE BRIDGE */
+.bridge { padding: 56px 48px; background: var(--cream); text-align: center; border-top: 1px solid var(--border); }
+.bridge-inner { max-width: 600px; margin: 0 auto; }
+.bridge-inner p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 12px; }
+.bridge-link { font-size: 15px; color: var(--drupal-blue); text-decoration: none; font-weight: 500; }
+.bridge-link:hover { text-decoration: underline; }
+.bridge-link::after { content: ' →'; opacity: 0.7; }
+
+footer { padding: 56px 48px 40px; background: var(--drupal-dark); color: rgba(255,255,255,0.4); font-size: 13px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 1.4fr repeat(4, 1fr); gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.footer-brand .footer-logo { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -0.5px; }
+.footer-brand p { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.5); max-width: 280px; }
+.footer-col h5 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px; color: rgba(255,255,255,0.6); font-weight: 500; margin-bottom: 14px; }
+.footer-col a { display: block; color: rgba(255,255,255,0.5); text-decoration: none; margin-bottom: 8px; font-size: 13px; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; }
+.footer-bottom-links a { color: rgba(255,255,255,0.5); text-decoration: none; margin-left: 18px; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.hero-grid > *:first-child > * { animation: fadeUp 0.7s ease-out both; }
+.hero-grid > *:first-child > *:nth-child(2) { animation-delay: 0.08s; }
+.hero-grid > *:first-child > *:nth-child(3) { animation-delay: 0.14s; }
+.hero-grid > *:nth-child(2) { animation: fadeUp 0.7s ease-out 0.1s both; }
+
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: repeat(2, 1fr); }
+  .ntd-grid { grid-template-columns: 1fr; }
+  .ntd-header { grid-template-columns: 1fr; gap: 20px; align-items: start; }
+  .fp-grid { grid-template-columns: repeat(3, 1fr); }
+  .mp-jobs-header { grid-template-columns: 1fr; gap: 20px; }
+}
+
+@media (max-width: 900px) {
+  .top-bridge { padding: 9px 16px; flex-direction: column; gap: 4px; text-align: center; }
+  .top-bridge-divider { display: none; }
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .nav-search { display: none; }
+  .hero { padding: 60px 24px 48px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero h1 { font-size: 34px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .quick-links { padding: 0 24px; }
+  .quick-links-inner { grid-template-columns: 1fr 1fr; }
+  .new-to-drupal { padding: 64px 24px; }
+  .ntd-header h2 { font-size: 30px; }
+  .ntd-card-feature h3 { font-size: 24px; }
+  .from-platform { padding: 64px 24px; }
+  .fp-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-project { padding: 64px 24px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .contribution { padding: 64px 24px; }
+  .contrib-grid { grid-template-columns: 1fr; gap: 32px; }
+  .activity { padding: 56px 24px; }
+  .activity-grid { grid-template-columns: 1fr; gap: 24px; }
+  .marketplace { padding: 64px 24px; }
+  .marketplace-grid { grid-template-columns: 1fr; }
+  .marketplace-header h2 { font-size: 30px; }
+  .mp-job-row { grid-template-columns: 1fr; gap: 8px; }
+  .mp-job-tags { justify-content: flex-start; }
+  .security { padding: 56px 24px; }
+  .security-grid { grid-template-columns: 1fr; }
+  .sec-card { padding: 20px 22px; gap: 14px; }
+  .events { padding: 64px 24px; }
+  .events-layout { grid-template-columns: 1fr; }
+  .event-feature { padding: 32px 28px; }
+  .event-feature h3 { font-size: 26px; }
+  .get-involved { padding: 72px 24px; }
+  .gi-inner h2 { font-size: 32px; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BRIDGE BANNER -->
+<div class="top-bridge">
+  <span class="top-bridge-here">You're on dev.drupal.org — the project &amp; community site</span>
+  <span class="top-bridge-divider">|</span>
+  <a href="#">Looking to evaluate Drupal? Visit drupal.org</a>
+</div>
+
+<nav>
+  <span class="nav-logo">Drupal</span>
+  <span class="nav-sub">/ dev</span>
+  <div class="nav-links">
+    <a href="#new-to-drupal">New to Drupal</a>
+    <a href="#about">About the project</a>
+    <a href="#contribute">Contribute</a>
+    <a href="#marketplace">Marketplace &amp; Jobs</a>
+    <a href="#events">Events</a>
+  </div>
+  <div class="nav-right">
+    <input class="nav-search" type="text" placeholder="Search docs, modules, issues...">
+    <a class="nav-login" href="#">Log in</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-eyebrow">Drupal 11.3 — Released March 2026</span>
+        <h1>The home of the <em>Drupal project.</em></h1>
+        <p class="hero-sub">Documentation, issue queues, modules, themes, and the 100,000+ contributors building the open source platform that powers the web. This is where Drupal gets made.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#">Get started</a>
+          <a class="btn-ghost" href="#">Browse documentation</a>
+        </div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
+          <span class="terminal-title">~/projects</span>
+        </div>
+        <div class="terminal-body">
+          <span class="t-comment"># Install Drupal CMS</span><br>
+          <span class="t-prompt">$</span> <span class="t-cmd">composer create-project drupal/cms my-site</span><br>
+          <span class="t-output">Installing drupal/cms (2.0.0)</span><br>
+          <span class="t-output">Installing 47 packages...</span><br>
+          <span class="t-success">✓ Project created successfully</span><br><br>
+          <span class="t-comment"># Start local dev server</span><br>
+          <span class="t-prompt">$</span> <span class="t-cmd">cd my-site &amp;&amp; ddev start</span><br>
+          <span class="t-success">✓ Site running at</span> <span class="t-link">https://my-site.ddev.site</span><span class="cursor-blink"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="hs-num">100,000+</div>
+        <div class="hs-label">Contributors</div>
+      </div>
+      <div>
+        <div class="hs-num">50,000+</div>
+        <div class="hs-label">Modules &amp; themes</div>
+      </div>
+      <div>
+        <div class="hs-num">1.3M</div>
+        <div class="hs-label">Sites worldwide</div>
+      </div>
+      <div>
+        <div class="hs-num">23 yrs</div>
+        <div class="hs-label">Of open source</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK LINKS — primary entry tasks -->
+<section class="quick-links">
+  <div class="quick-links-inner">
+    <a class="ql-card" href="#">
+      <div class="ql-icon blue">≡</div>
+      <h3>Documentation</h3>
+      <p>Guides, API reference, and tutorials</p>
+    </a>
+    <a class="ql-card" href="#">
+      <div class="ql-icon green">⊞</div>
+      <h3>Modules &amp; themes</h3>
+      <p>50,000+ projects in the marketplace</p>
+    </a>
+    <a class="ql-card" href="#">
+      <div class="ql-icon warm">◎</div>
+      <h3>Issue queues</h3>
+      <p>Report bugs, review patches, contribute</p>
+    </a>
+    <a class="ql-card" href="#">
+      <div class="ql-icon purple">⌘</div>
+      <h3>API reference</h3>
+      <p>Hooks, services, and developer APIs</p>
+    </a>
+  </div>
+</section>
+
+<!-- NEW TO DRUPAL — enticement for new developers -->
+<section class="new-to-drupal" id="new-to-drupal">
+  <div class="ntd-inner">
+    <div class="ntd-header">
+      <div class="ntd-header-left">
+        <div class="section-label">New to Drupal?</div>
+        <h2>You can have a working Drupal site in <em>15 minutes.</em></h2>
+      </div>
+      <div class="ntd-header-right">
+        <p>If you've heard Drupal is hard to get started with, that's not the project we're building today. Here are the three fastest paths from zero to a real Drupal site you can click around in — pick the one that suits you.</p>
+      </div>
+    </div>
+
+    <div class="ntd-grid">
+      <a class="ntd-card ntd-card-feature" href="#">
+        <span class="ntd-time-pill feature">⚡ ~15 minutes · No install</span>
+        <h3>Try Drupal in your browser</h3>
+        <p>Spin up a real, working Drupal CMS site in the cloud. No Composer, no Docker, no database setup. Click around, build pages with Canvas, install modules, see how it all fits together.</p>
+        <ul class="ntd-features">
+          <li>Pre-installed Drupal CMS with sample content</li>
+          <li>Drupal Canvas page builder ready to go</li>
+          <li>Free trial — no credit card required</li>
+        </ul>
+        <span class="ntd-cta-link-feature">Launch a sandbox</span>
+      </a>
+
+      <a class="ntd-card" href="#">
+        <span class="ntd-time-pill standard">~30 minutes · Local install</span>
+        <h3>Install Drupal locally</h3>
+        <p>The traditional way. Set up Drupal on your own machine with DDEV — the recommended local development environment for Drupal.</p>
+        <ul class="ntd-features">
+          <li>Step-by-step quick-start guide</li>
+          <li>Works on macOS, Linux, and Windows</li>
+          <li>Full developer environment for theming and modules</li>
+        </ul>
+        <span class="ntd-cta-link">Read the install guide</span>
+      </a>
+
+      <a class="ntd-card" href="#">
+        <span class="ntd-time-pill standard">~10 minutes · Read</span>
+        <h3>Drupal in 10 minutes</h3>
+        <p>If you'd rather understand the shape of Drupal before installing anything — this is the orientation read for developers coming from WordPress, Sitecore, or any other CMS.</p>
+        <ul class="ntd-features">
+          <li>How Drupal's content model works</li>
+          <li>What modules, themes, and recipes are</li>
+          <li>How Drupal compares to other platforms</li>
+        </ul>
+        <span class="ntd-cta-link">Read the orientation</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COMING FROM ANOTHER PLATFORM — promoted from a strip to its own section -->
+<section class="from-platform">
+  <div class="fp-inner">
+    <div class="fp-header">
+      <div class="section-label">Migrating in</div>
+      <h2 class="section-title">Coming from <em>another platform?</em></h2>
+      <p class="section-intro">Specific guides for developers and teams moving to Drupal from the platforms you've already used. What's familiar, what's different, and the cleanest migration path.</p>
+    </div>
+    <div class="fp-grid">
+      <a class="fp-card" href="#">
+        <div class="fp-logo wp">W</div>
+        <h4>From WordPress</h4>
+        <p>The biggest migration story. Why teams switch and how to bring content over.</p>
+      </a>
+      <a class="fp-card" href="#">
+        <div class="fp-logo sc">S</div>
+        <h4>From Sitecore</h4>
+        <p>Open source alternative for enterprise teams rethinking licensing.</p>
+      </a>
+      <a class="fp-card" href="#">
+        <div class="fp-logo aem">Ae</div>
+        <h4>From Adobe AEM</h4>
+        <p>How Drupal's architecture maps to AEM concepts.</p>
+      </a>
+      <a class="fp-card" href="#">
+        <div class="fp-logo op">O</div>
+        <h4>From Optimizely</h4>
+        <p>Migrating content models, personalisation, and editorial workflows.</p>
+      </a>
+      <a class="fp-card" href="#">
+        <div class="fp-logo st">&lt;/&gt;</div>
+        <h4>From a static site</h4>
+        <p>Stepping up from Astro, Next.js, or Jekyll without losing the parts you love.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT THE PROJECT — the major section -->
+<section class="about-project" id="about">
+  <div class="about-inner">
+    <div class="about-header">
+      <div class="section-label">About the project</div>
+      <h2 class="section-title">Everything you need to <em>build with Drupal.</em></h2>
+      <p class="section-intro">Drupal is a 23-year-old open source project with the depth of resources to match. From your first install to running mission-critical infrastructure — the documentation, tooling, and community are here.</p>
+    </div>
+
+    <div class="about-grid">
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon blue">→_</div>
+        <h3>Getting started</h3>
+        <p>Install Drupal in minutes. Step-by-step guides for every environment.</p>
+        <span class="about-cell-link">Install guide</span>
+      </a>
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon blue">{}</div>
+        <h3>Documentation</h3>
+        <p>Architecture, theming, multisite, performance, and operations.</p>
+        <span class="about-cell-link">Browse docs</span>
+      </a>
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon purple">&lt;/&gt;</div>
+        <h3>API reference</h3>
+        <p>Hooks, services, plugins, and the full Drupal core API.</p>
+        <span class="about-cell-link">api.drupal.org</span>
+      </a>
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon green">⊞</div>
+        <h3>Modules</h3>
+        <p>40,000+ contributed modules — search, evaluate, install.</p>
+        <span class="about-cell-link">Browse modules</span>
+      </a>
+
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon green">◐</div>
+        <h3>Themes &amp; recipes</h3>
+        <p>Starter themes, design systems, and pre-configured recipes.</p>
+        <span class="about-cell-link">Browse themes</span>
+      </a>
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon warm">◎</div>
+        <h3>Issue queues</h3>
+        <p>Track bugs, request features, review patches across every project.</p>
+        <span class="about-cell-link">Open issues</span>
+      </a>
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon warm">⚑</div>
+        <h3>Security</h3>
+        <p>Security advisories, the security team, and CVE process.</p>
+        <span class="about-cell-link">Security advisories</span>
+      </a>
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon purple">◈</div>
+        <h3>Accessibility</h3>
+        <p>WCAG conformance, the a11y team, and accessibility commitment.</p>
+        <span class="about-cell-link">Accessibility</span>
+      </a>
+
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon blue">↑</div>
+        <h3>Releases &amp; roadmap</h3>
+        <p>Version timeline, release cycle, and where Drupal is headed.</p>
+        <span class="about-cell-link">Roadmap</span>
+      </a>
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon green">⇄</div>
+        <h3>Migrations</h3>
+        <p>Upgrade paths, migration tooling, and version support.</p>
+        <span class="about-cell-link">Migration guide</span>
+      </a>
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon purple">◇</div>
+        <h3>Governance</h3>
+        <p>How decisions are made: core committers, working groups, and policy.</p>
+        <span class="about-cell-link">Governance</span>
+      </a>
+      <a class="about-cell" href="#">
+        <div class="about-cell-icon warm">⊕</div>
+        <h3>Help &amp; support</h3>
+        <p>Forums, Slack, Stack Exchange, and community-led support channels.</p>
+        <span class="about-cell-link">Get help</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTRIBUTION SECTION -->
+<section class="contribution" id="contribute">
+  <div class="contrib-inner">
+    <div class="contrib-grid">
+      <div class="contrib-left">
+        <div class="section-label">Contribution</div>
+        <h2 class="section-title">Drupal is built by the people who use it.</h2>
+        <p class="section-intro">There's no single company behind Drupal — there's a global community of developers, designers, marketers, agencies, and end users contributing time, code, and expertise. Joining is the same on day one as on year ten: pick a path, ship a contribution, get credited.</p>
+        <div class="contrib-quote">"Contributing to Drupal isn't just code. It's docs, design, mentoring, organising events, translating — every kind of contribution counts."</div>
+        <div class="contrib-quote-by">— Drupal Community Working Group</div>
+      </div>
+
+      <div class="contrib-paths">
+        <a class="contrib-path" href="#">
+          <span class="contrib-path-num">01</span>
+          <div class="contrib-path-body">
+            <h4>Start contributing in 30 minutes</h4>
+            <p>The First-Time Contributor Guide walks through your first issue, your first patch, and your first credit.</p>
+          </div>
+          <span class="contrib-path-arrow">→</span>
+        </a>
+        <a class="contrib-path" href="#">
+          <span class="contrib-path-num">02</span>
+          <div class="contrib-path-body">
+            <h4>Find an issue to work on</h4>
+            <p>Filter the issue queue by "novice," "needs review," or by your favourite module. Every accepted patch earns recognition.</p>
+          </div>
+          <span class="contrib-path-arrow">→</span>
+        </a>
+        <a class="contrib-path" href="#">
+          <span class="contrib-path-num">03</span>
+          <div class="contrib-path-body">
+            <h4>Join a working group</h4>
+            <p>Core, security, accessibility, documentation, AI, marketing, governance — find the group working on what you care about.</p>
+          </div>
+          <span class="contrib-path-arrow">→</span>
+        </a>
+        <a class="contrib-path" href="#">
+          <span class="contrib-path-num">04</span>
+          <div class="contrib-path-body">
+            <h4>Contribute as an organisation</h4>
+            <p>Get your agency or in-house team set up to contribute. Time, sponsorship, and DCP credits.</p>
+          </div>
+          <span class="contrib-path-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITY FEED -->
+<section class="activity">
+  <div class="activity-inner">
+    <div class="section-header-flex">
+      <div>
+        <div class="section-label">The project, live</div>
+        <h2 class="section-title">What's happening <em>right now.</em></h2>
+      </div>
+      <a class="btn-outline" href="#">All activity</a>
+    </div>
+
+    <div class="activity-grid">
+      <div class="activity-list">
+        <div class="activity-item">
+          <div class="activity-avatar">SK</div>
+          <div class="activity-content">
+            <div class="activity-text"><strong>sarahk</strong> opened <a href="#">#3478291: Add support for AI translation in Drupal Canvas</a> <span class="activity-type at-issue">Issue</span></div>
+            <div class="activity-time">12 minutes ago in Drupal core</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-avatar">DB</div>
+          <div class="activity-content">
+            <div class="activity-text"><strong>davebellini</strong> committed <a href="#">Fix ckeditor5 plugin loading on subdirectory installs</a> <span class="activity-type at-commit">Commit</span></div>
+            <div class="activity-time">28 minutes ago to Drupal 11.x</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-avatar">SA</div>
+          <div class="activity-content">
+            <div class="activity-text"><strong>Security team</strong> published <a href="#">SA-CORE-2026-002 — Moderately critical advisory</a> <span class="activity-type at-security">Security</span></div>
+            <div class="activity-time">1 hour ago</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-avatar">PT</div>
+          <div class="activity-content">
+            <div class="activity-text"><strong>pdt</strong> released <a href="#">Webform 6.3.0</a> with multi-step conditional logic <span class="activity-type at-release">Release</span></div>
+            <div class="activity-time">2 hours ago</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-sidebar">
+        <div class="stat-card">
+          <div class="stat-num">4,287 <span class="stat-trend">+12 today</span></div>
+          <div class="stat-label">Open issues being worked on</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">1,847 <span class="stat-trend">+24%</span></div>
+          <div class="stat-label">Active contributors this month</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETPLACE + JOBS — combined DA directory section -->
+<section class="marketplace" id="marketplace">
+  <div class="marketplace-inner">
+    <div class="marketplace-header">
+      <div class="section-label">Marketplace</div>
+      <h2>Find <em>partners</em>, <em>hosts</em>, <em>templates</em>, and <em>jobs</em>.</h2>
+      <p>The Drupal Association's directory connects Drupal to opportunity. Whether you need an agency to build, a host to run on, a template to start from, or your next role — it's here.</p>
+    </div>
+
+    <div class="marketplace-grid">
+      <a class="mp-card" href="#">
+        <span class="mp-tag partners">Drupal Certified Partners</span>
+        <h3>Find an agency</h3>
+        <p>Vetted agencies and consultancies certified by the Drupal Association. Filtered by region, industry, project size, and Drupal expertise.</p>
+        <div class="mp-meta">
+          <div class="mp-meta-item">
+            <span class="mp-meta-num">340+</span>
+            Certified partners
+          </div>
+          <div class="mp-meta-item">
+            <span class="mp-meta-num">68</span>
+            Countries
+          </div>
+        </div>
+        <span class="mp-link">Browse partners</span>
+      </a>
+
+      <a class="mp-card" href="#">
+        <span class="mp-tag hosting">Hosting</span>
+        <h3>Find a host</h3>
+        <p>Drupal-optimised hosting providers — managed platforms, cloud infrastructure, and specialist Drupal hosting from trusted vendors.</p>
+        <div class="mp-meta">
+          <div class="mp-meta-item">
+            <span class="mp-meta-num">25+</span>
+            Hosting partners
+          </div>
+          <div class="mp-meta-item">
+            <span class="mp-meta-num">5★</span>
+            Avg. uptime SLAs
+          </div>
+        </div>
+        <span class="mp-link">Compare hosting</span>
+      </a>
+
+      <a class="mp-card" href="#">
+        <span class="mp-tag templates">Templates &amp; Distributions</span>
+        <h3>Find a template</h3>
+        <p>Pre-built Drupal distributions and starter templates — government, higher ed, nonprofit, publishing, and more. Skip the blank page.</p>
+        <div class="mp-meta">
+          <div class="mp-meta-item">
+            <span class="mp-meta-num">120+</span>
+            Distributions
+          </div>
+          <div class="mp-meta-item">
+            <span class="mp-meta-num">Free</span>
+            All open source
+          </div>
+        </div>
+        <span class="mp-link">Browse templates</span>
+      </a>
+    </div>
+
+    <!-- JOBS subsection inside marketplace -->
+    <div class="mp-jobs" id="jobs">
+      <div class="mp-jobs-header">
+        <div>
+          <span class="mp-tag jobs">Drupal Jobs</span>
+          <h3 class="mp-jobs-title">Where Drupal <em>careers</em> happen.</h3>
+          <p class="mp-jobs-sub">1,200+ open Drupal roles across 60+ countries — from contracts to senior positions at the world's largest agencies.</p>
+        </div>
+        <div class="mp-jobs-cta-pair">
+          <a class="mp-jobs-btn-primary" href="#">Find a job</a>
+          <a class="mp-jobs-btn-ghost" href="#">Post a job</a>
+        </div>
+      </div>
+
+      <div class="mp-jobs-listings">
+        <a class="mp-job-row" href="#">
+          <div class="mp-job-info">
+            <h4>Senior Drupal Developer</h4>
+            <div class="mp-job-meta"><span>Acquia</span><span>Remote · Global</span><span>2d ago</span></div>
+          </div>
+          <div class="mp-job-tags">
+            <span class="mp-job-tag senior">Senior</span>
+            <span class="mp-job-tag remote">Remote</span>
+          </div>
+        </a>
+        <a class="mp-job-row" href="#">
+          <div class="mp-job-info">
+            <h4>Drupal Front-End Engineer (Canvas)</h4>
+            <div class="mp-job-meta"><span>Lullabot</span><span>Remote · US</span><span>3d ago</span></div>
+          </div>
+          <div class="mp-job-tags">
+            <span class="mp-job-tag remote">Remote</span>
+          </div>
+        </a>
+        <a class="mp-job-row" href="#">
+          <div class="mp-job-info">
+            <h4>Drupal Architect — Higher Ed</h4>
+            <div class="mp-job-meta"><span>Velir</span><span>Boston, MA · Hybrid</span><span>4d ago</span></div>
+          </div>
+          <div class="mp-job-tags">
+            <span class="mp-job-tag senior">Senior</span>
+          </div>
+        </a>
+        <a class="mp-job-row" href="#">
+          <div class="mp-job-info">
+            <h4>Drupal Module Developer (Contract)</h4>
+            <div class="mp-job-meta"><span>Four Kitchens</span><span>Remote</span><span>5d ago</span></div>
+          </div>
+          <div class="mp-job-tags">
+            <span class="mp-job-tag contract">Contract</span>
+            <span class="mp-job-tag remote">Remote</span>
+          </div>
+        </a>
+      </div>
+      <div class="mp-jobs-footer">
+        <a href="#" class="mp-jobs-all-link">View all 1,200+ Drupal jobs →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEWARD & UPSTREAM SUPPORT — compact -->
+<section class="security" id="security">
+  <div class="security-inner">
+    <div class="security-header">
+      <div class="section-label">Long-term security &amp; support</div>
+      <h2 class="section-title">DA programs that <em>protect Drupal at scale.</em></h2>
+    </div>
+
+    <div class="security-grid">
+      <a class="sec-card steward" href="#">
+        <div class="sec-shield steward">⚑</div>
+        <div class="sec-body">
+          <h3>Drupal Steward</h3>
+          <p>Network-level protection against highly critical core vulnerabilities — applied before patches roll out.</p>
+        </div>
+        <span class="sec-arrow">→</span>
+      </a>
+
+      <a class="sec-card upstream" href="#">
+        <div class="sec-shield upstream">⏳</div>
+        <div class="sec-body">
+          <h3>Drupal Upstream Support</h3>
+          <p>Long-term support for previous major versions — security patches and migration runway.</p>
+        </div>
+        <span class="sec-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events" id="events">
+  <div class="events-inner">
+    <div class="section-header-flex">
+      <div>
+        <div class="section-label">Events</div>
+        <h2 class="section-title">Where the community <em>shows up.</em></h2>
+        <p class="section-intro">DrupalCon, Dev Days, AI events, regional camps — Drupal is a community that meets in person. Hundreds of events a year, across every continent.</p>
+      </div>
+    </div>
+
+    <div class="events-layout">
+      <a class="event-feature" href="#">
+        <span class="event-feature-tag">Featured event</span>
+        <h3>DrupalCon Vienna 2026</h3>
+        <div class="event-feature-meta">
+          <span>📅 14–17 September 2026</span>
+          <span>📍 Austria Center Vienna</span>
+        </div>
+        <p class="event-feature-desc">The flagship event of the year. Sessions on Canvas, AI, enterprise architecture, and the future of Drupal — plus three days of contribution sprints, the Driesnote, and 3,000+ Drupalers in one place.</p>
+        <span class="event-feature-cta">Get your ticket →</span>
+      </a>
+
+      <div class="events-list-side">
+        <a class="event-side" href="#">
+          <div class="event-side-date">
+            <div class="event-side-month">Jul</div>
+            <div class="event-side-day">22</div>
+          </div>
+          <div class="event-side-info">
+            <h4>Drupal Dev Days 2026</h4>
+            <p>Lille, France — code &amp; community</p>
+          </div>
+        </a>
+        <a class="event-side" href="#">
+          <div class="event-side-date">
+            <div class="event-side-month">Aug</div>
+            <div class="event-side-day">12</div>
+          </div>
+          <div class="event-side-info">
+            <h4>Drupal AI Summit</h4>
+            <p>Virtual — full day, free to attend</p>
+          </div>
+        </a>
+        <a class="event-side" href="#">
+          <div class="event-side-date">
+            <div class="event-side-month">Sep</div>
+            <div class="event-side-day">3</div>
+          </div>
+          <div class="event-side-info">
+            <h4>DrupalCamp Melbourne</h4>
+            <p>Regional — talks &amp; workshops</p>
+          </div>
+        </a>
+        <a class="event-side" href="#">
+          <div class="event-side-date">
+            <div class="event-side-month">Oct</div>
+            <div class="event-side-day">5</div>
+          </div>
+          <div class="event-side-info">
+            <h4>Global Contribution Weekend</h4>
+            <p>Worldwide — sprint with mentors</p>
+          </div>
+        </a>
+        <a class="event-side" href="#">
+          <div class="event-side-date">
+            <div class="event-side-month">Nov</div>
+            <div class="event-side-day">14</div>
+          </div>
+          <div class="event-side-info">
+            <h4>BADCamp 2026</h4>
+            <p>Bay Area — community camp</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="events-cta">
+      <a class="btn-outline" href="#">View all 240+ events worldwide</a>
+    </div>
+  </div>
+</section>
+
+<!-- GET INVOLVED CTA -->
+<section class="get-involved">
+  <div class="gi-inner">
+    <h2>Drupal is yours to <em>shape.</em></h2>
+    <p class="gi-sub">Whether you write code, design interfaces, write documentation, translate, organise meetups, or champion the platform inside your organisation — there's a place for you in this project.</p>
+    <div class="gi-actions">
+      <a class="btn-primary" href="#">Create a Drupal.org account</a>
+      <a class="btn-ghost" href="#">Read the contributor guide</a>
+    </div>
+  </div>
+</section>
+
+<!-- BRIDGE TO PRODUCT SITE removed — now at top of page -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Drupal /dev</div>
+        <p>The home of the Drupal open source project. Run by the Drupal Association — a 501(c)(3) nonprofit dedicated to the project and its community.</p>
+      </div>
+      <div class="footer-col">
+        <h5>About</h5>
+        <a href="#">Documentation</a>
+        <a href="#">API reference</a>
+        <a href="#">Issue queues</a>
+        <a href="#">Releases</a>
+        <a href="#">Security</a>
+      </div>
+      <div class="footer-col">
+        <h5>Community</h5>
+        <a href="#">Contribute</a>
+        <a href="#">Working groups</a>
+        <a href="#">Slack</a>
+        <a href="#">Forums</a>
+        <a href="#">Code of conduct</a>
+      </div>
+      <div class="footer-col">
+        <h5>Marketplace</h5>
+        <a href="#">Find a partner</a>
+        <a href="#">Find a host</a>
+        <a href="#">Distributions</a>
+        <a href="#">Drupal Jobs</a>
+        <a href="#">Drupal Steward</a>
+        <a href="#">Upstream Support</a>
+      </div>
+      <div class="footer-col">
+        <h5>Association</h5>
+        <a href="#">About the DA</a>
+        <a href="#">Membership</a>
+        <a href="#">Events</a>
+        <a href="#">Sponsorship</a>
+        <a href="#">Press</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Drupal Association. Drupal is a registered trademark of Dries Buytaert.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Trademark</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
